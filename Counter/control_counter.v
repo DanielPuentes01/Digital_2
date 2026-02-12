@@ -30,7 +30,7 @@ module control_counter (
 
   reg [2:0] state;
 
-  always @(posedge clk) begin
+  always @(negedge clk) begin
     if (rst) begin
       state = START;
     end else begin
