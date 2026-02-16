@@ -54,10 +54,18 @@ module counter(
 
   comp #(
     .WIDTH(8)
-  ) compA0(
+  ) compZ(
     .a(data),
     .b(8'b0),
     .eq(w_z)
+  );
+
+  comp #(
+    .WIDTH(1)
+  ) compA0 (
+    .a(data[0]),
+    .b(1'b1),
+    .eq(w_a0)
   );
 
 

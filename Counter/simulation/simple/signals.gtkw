@@ -1,15 +1,15 @@
 [*]
 [*] GTKWave Analyzer v3.3.117 (w)1999-2023 BSI
-[*] Thu Feb 12 17:57:50 2026
+[*] Mon Feb 16 03:42:56 2026
 [*]
 [dumpfile] "/home/daniel22n4/Documents/2026-1/Digital/Repositorios/Digital_2/Counter/simulation/simple/counter_TB.vcd"
-[dumpfile_mtime] "Thu Feb 12 17:54:58 2026"
-[dumpfile_size] 3567
+[dumpfile_mtime] "Mon Feb 16 03:42:24 2026"
+[dumpfile_size] 4263
 [savefile] "/home/daniel22n4/Documents/2026-1/Digital/Repositorios/Digital_2/Counter/simulation/simple/signals.gtkw"
-[timestart] 0
+[timestart] 528900
 [size] 1366 699
 [pos] -1 -1
-*-17.931570 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+*-15.931570 625700 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
 [treeopen] counter_TB.
 [treeopen] counter_TB.uut.
 [sst_width] 228
@@ -20,7 +20,9 @@
 counter_TB.uut.data_in[7:0]
 @24
 counter_TB.uut.par
+@28
+counter_TB.uut.done
 @29
-counter_TB.uut.control_counter.state[2:0]
+counter_TB.uut.clk
 [pattern_trace] 1
 [pattern_trace] 0

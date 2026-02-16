@@ -53,7 +53,7 @@ module control_counter (
         end
 
         CHECK2 : begin
-          state = z ? CHECK1 : DONE;
+          state = z ? DONE : CHECK1;
         end
 
         DONE : begin
