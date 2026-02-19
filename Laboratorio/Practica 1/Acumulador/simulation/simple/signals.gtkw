@@ -1,0 +1,32 @@
+[*]
+[*] GTKWave Analyzer v3.3.117 (w)1999-2023 BSI
+[*] Wed Feb 11 06:23:07 2026
+[*]
+[dumpfile] "/home/daniel22n4/Documents/2026-1/Digital/Laboratorio/Practica 1/Acumulador/simulation/simple/acumulador_lab_TB.vcd"
+[dumpfile_mtime] "Wed Feb 11 06:17:14 2026"
+[dumpfile_size] 3860
+[savefile] "/home/daniel22n4/Documents/2026-1/Digital/Laboratorio/Practica 1/Acumulador/simulation/simple/signals.gtkw"
+[timestart] 73500
+[size] 1366 699
+[pos] -1 -1
+*-14.861180 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] acumulador_lab_TB.
+[treeopen] acumulador_lab_TB.uut.
+[sst_width] 228
+[signals_width] 147
+[sst_expanded] 1
+[sst_vpaned_height] 184
+@28
+acumulador_lab_TB.uut.clk
+acumulador_lab_TB.uut.done
+acumulador_lab_TB.uut.times[2:0]
+acumulador_lab_TB.uut.timer[2:0]
+@22
+acumulador_lab_TB.uut.x_in[3:0]
+acumulador_lab_TB.uut.x_out[5:0]
+@28
+acumulador_lab_TB.uut.control_acumulador_lab.state[2:0]
+acumulador_lab_TB.uut.rst
+acumulador_lab_TB.uut.init
+[pattern_trace] 1
+[pattern_trace] 0

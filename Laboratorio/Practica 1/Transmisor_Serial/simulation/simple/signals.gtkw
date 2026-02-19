@@ -1,0 +1,29 @@
+[*]
+[*] GTKWave Analyzer v3.3.117 (w)1999-2023 BSI
+[*] Wed Feb 18 19:33:51 2026
+[*]
+[dumpfile] "/home/daniel22n4/Documents/2026-1/Digital/Repositorios/Digital_2/Laboratorio/Practica 1/Transmisor_Serial/simulation/simple/transmisor_serial_TB.vcd"
+[dumpfile_mtime] "Wed Feb 18 19:32:59 2026"
+[dumpfile_size] 5233
+[savefile] "/home/daniel22n4/Documents/2026-1/Digital/Repositorios/Digital_2/Laboratorio/Practica 1/Transmisor_Serial/simulation/simple/signals.gtkw"
+[timestart] 0
+[size] 1366 699
+[pos] -1 -1
+*-15.931570 158000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] transmisor_serial_TB.
+[treeopen] transmisor_serial_TB.uut.
+[sst_width] 228
+[signals_width] 126
+[sst_expanded] 1
+[sst_vpaned_height] 184
+@28
+transmisor_serial_TB.uut.data_in[7:0]
+transmisor_serial_TB.uut.tx
+transmisor_serial_TB.uut.control_transmisor_serial.state[2:0]
+transmisor_serial_TB.uut.control_transmisor_serial.init
+transmisor_serial_TB.uut.control_transmisor_serial.rst
+transmisor_serial_TB.uut.control_transmisor_serial.clk
+@29
+transmisor_serial_TB.uut.busy
+[pattern_trace] 1
+[pattern_trace] 0

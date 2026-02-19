@@ -1,0 +1,28 @@
+[*]
+[*] GTKWave Analyzer v3.3.117 (w)1999-2023 BSI
+[*] Tue Feb 10 16:08:43 2026
+[*]
+[dumpfile] "/home/daniel22n4/Documents/2026-1/Digital/Laboratorio/Practica 1/simulation/simple/control_semaforo_TB.vcd"
+[dumpfile_mtime] "Tue Feb 10 16:07:15 2026"
+[dumpfile_size] 1368
+[savefile] "/home/daniel22n4/Documents/2026-1/Digital/Laboratorio/Practica 1/simulation/simple/signals.gtkw"
+[timestart] 0
+[size] 1366 699
+[pos] -1 -1
+*-17.965015 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] control_semaforo_TB.
+[sst_width] 290
+[signals_width] 110
+[sst_expanded] 1
+[sst_vpaned_height] 188
+@28
+control_semaforo_TB.uut.out_grn
+control_semaforo_TB.uut.out_red
+control_semaforo_TB.uut.out_ylw
+control_semaforo_TB.uut.state[1:0]
+control_semaforo_TB.uut.clk
+control_semaforo_TB.uut.timer[2:0]
+@29
+control_semaforo_TB.uut.rst
+[pattern_trace] 1
+[pattern_trace] 0
