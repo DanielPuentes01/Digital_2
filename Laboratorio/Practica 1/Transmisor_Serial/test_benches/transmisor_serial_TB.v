@@ -41,7 +41,7 @@ module transmisor_serial_TB;
     clk = 0;
     rst = 1;
     start = 0;
-    x_in = 8'd24;
+    x_in = 8'b10110010;
   end
   initial begin //Process for clk
     #OFFSET;
