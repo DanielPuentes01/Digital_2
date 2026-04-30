@@ -1,30 +1,21 @@
 module LSR #(
-  parameter WIDTH = 8,
-  parameter RST_VALUE = 0,
-  parameter PARALLEL_INPUT = 0,
-  parameter PARALLEL_OUTPUT = 0,
-  parameter SHIFT_AMOUNT = 1
-) (
-  input clk,
-  input rst,
-  input [(WIDTH-1)*PARALLEL_INPUT:0] in_DATA,
-  input in_SHIFT,
-  input in_LOAD,
-  output [(WIDTH-1)*PARALLEL_OUTPUT:0] out_DATA
-);
-  reg [WIDTH-1:0] reg_STORED;
+  parameter WIDTH = 8
+) (clk, in_B , shift , load, rst , s_B);
+  input clk;
+  input [WIDTH-1:0]in_B;
+  input load;
+  input shift;
+  input rst;
+  output reg [WIDTH-1:0]s_B;
 
-  generate
-    if (PARALLEL_OUTPUT) assign out_DATA = reg_STORED;
-    else assign out_DATA = reg_STORED[WIDTH-1];
-  endgenerate
-
-  always @(negedge clk ) begin
-    if (rst) reg_STORED = RST_VALUE;
-    else if (in_SHIFT) reg_STORED = reg_STORED << SHIFT_AMOUNT;
-    else if (PARALLEL_INPUT & in_LOAD) reg_STORED = in_DATA;
-    else if (!PARALLEL_INPUT & in_LOAD) reg_STORED[0] = in_DATA;
-    else reg_STORED = reg_STORED;
-  end
+always @(negedge clk)
+  if(rst) s_B = 0;
+  else if(load) s_B = in_B ;
+  else
+   begin
+    if(shift) s_B = {s_B[WIDTH-2:0], 1'b0};
+    else s_B = s_B;
+   end
 
 endmodule
+
