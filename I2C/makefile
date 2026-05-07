@@ -3,13 +3,13 @@ SIM_DIR = simulation
 SIMPLE_SIM_DIR = $(SIM_DIR)/simple
 POST_SYNTH_SIM_DIR = $(SIM_DIR)/post_synth
 TESTBENCH_DIR = test_benches
-BUILDING_BLOCKS_DIR = ../raw_implementation/building_blocks
+BUILDING_BLOCKS_DIR = ../building_blocks
 ECP5_SIM_CELLS=$(shell yosys-config --datdir/ecp5/cells_sim.v)
 
 DESIGN = I2C
 TOP = I2C
-TARGET = paint
-OBJS = $(wildcard *.v) $(wildcard $(BUILDING_BLOCKS_DIR)/*.v) $(wildcard ./dependencies/*/*.v)
+TARGET = I2C
+OBJS = $(wildcard *.v) $(wildcard $(BUILDING_BLOCKS_DIR)/*.v) $(wildcard ./dependencies/*.v)
 
 .PHONY : all simple_sim re_simple_sim sim_post_synth re_sim_post_synth clean
 all : simple_sim

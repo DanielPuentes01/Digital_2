@@ -38,9 +38,4 @@ module scl_management (
     .done(cont_clk_done)
   );
   
-
-
-
-
-
 endmodule
