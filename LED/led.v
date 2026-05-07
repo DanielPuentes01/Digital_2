@@ -55,9 +55,8 @@ module led (
   ) registro (
       .clk(clk),
       .in_B(Color_in),
-      .shift(sft),
+      .sft(sft),
       .load(load),
-      .rst(rst),
       .s_B(color)
   );
 
@@ -118,7 +117,7 @@ module led (
       .POS_EDGE(1)
   ) contador (
       .clk  (clk),
-      .rst  (rst),
+      .rst  (rst | RST_timer_done),
       .plus (sft),
       .value(cont)
   );

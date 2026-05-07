@@ -40,11 +40,7 @@ module control_contar_blanco (
         end
 
         DONE: begin
-          if (rst) begin
-            state = START;
-          end else begin
-            state = DONE;
-          end
+          state = START;
         end
 
         default: state = START;

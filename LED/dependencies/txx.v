@@ -1,6 +1,6 @@
-module txx (
-  parameter WIDTH = 11;
-  parameter [WIDTH-1:0] TIME_COMP = (1'b1 << (WIDTH-1));
+module txx #(
+  parameter WIDTH = 11,
+  parameter [WIDTH-1:0] TIME_COMP = 0
 )(
     clk,
     rst,

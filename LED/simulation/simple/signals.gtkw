@@ -1,0 +1,38 @@
+[*]
+[*] GTKWave Analyzer v3.3.117 (w)1999-2023 BSI
+[*] Thu May  7 16:56:03 2026
+[*]
+[dumpfile] "/home/danielp/Documents/2026-1/Digital/Repositorios/Digital_2/LED/simulation/simple/led_TB.vcd"
+[dumpfile_mtime] "Thu May  7 16:55:20 2026"
+[dumpfile_size] 3688719
+[savefile] "/home/danielp/Documents/2026-1/Digital/Repositorios/Digital_2/LED/simulation/simple/signals.gtkw"
+[timestart] 0
+[size] 1366 739
+[pos] -1 -1
+*-25.534182 1280000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] led_TB.
+[treeopen] led_TB.uut.
+[sst_width] 207
+[signals_width] 142
+[sst_expanded] 1
+[sst_vpaned_height] 198
+@28
+led_TB.uut.DIN
+led_TB.uut.Color_in[23:0]
+@22
+led_TB.uut.control_led.state[3:0]
+@28
+led_TB.uut.init
+led_TB.uut.rst
+led_TB.uut.RST_timer_s
+led_TB.uut.RST_timer_done
+led_TB.uut.T0H_s
+led_TB.uut.T0H_done
+led_TB.uut.T0L_s
+led_TB.uut.T0L_done
+led_TB.uut.T1H_s
+led_TB.uut.T1H_done
+led_TB.uut.T1L_s
+led_TB.uut.T1L_done
+[pattern_trace] 1
+[pattern_trace] 0
