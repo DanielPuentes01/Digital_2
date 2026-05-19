@@ -37,6 +37,23 @@ re_simple_sim : $(SIMPLE_SIM_DIR)
 	vvp $(SIMPLE_SIM_DIR)/$(TARGET)/$(TARGET)_TB.vvp
 	mv $(TARGET)_TB.vcd $(SIMPLE_SIM_DIR)/$(TARGET)/ 2>/dev/null || true
 
+build/$(TOP).json : $(BUILD_DIR)
+	yosys -v3 -l $(BUILD_DIR)/synth.log -p 'synth_ecp5 -top $(TOP) -json $(BUILD_DIR)/$(TOP).json ; fsm ; write_verilog -attr2comment $(BUILD_DIR)/$(TOP)_synth.v ' $(OBJS)
+#	yosys -v3 -l synth.log -p 'synth_ecp5              -top $(TOP) -json $(TOP).json;              write_verilog -attr2comment $(TOP)_synth.v' $(OBJS)
+
+
+sim_post_synth : build/$(TOP).json $(OBJS) $(POST_SYNTH_SIM_DIR) 
+	iverilog -o $(POST_SYNTH_SIM_DIR)/$@_PS.vvp -s $(TOP)_TB $(TESTBENCH_DIR)/$(TARGET)_TB.v $(BUILD_DIR)/$(TOP)_synth.v $(ECP5_SIM_CELLS)
+#	iverilog -o $@_PS.vpp                       -s $(TOP)_TB $(TARGET)_TB.v                  $(TOP)_synth.v              $(ECP5_SIM_CELLS) 
+
+	vvp $(POST_SYNTH_SIM_DIR)/$@_PS.vvp
+	mv $(TOP)_TB.vcd $(POST_SYNTH_SIM_DIR)/
+	gtkwave $(POST_SYNTH_SIM_DIR)/signals.gtkw &
+re_sim_post_synth : build/$(TOP).json $(OBJS) $(POST_SYNTH_SIM_DIR)
+	iverilog -o $(POST_SYNTH_SIM_DIR)/$@_PS.vvp -s $(TOP)_TB $(TESTBENCH_DIR)/$(TARGET)_TB.v $(BUILD_DIR)/$(TOP)_synth.v $(ECP5_SIM_CELLS)
+	vvp $(POST_SYNTH_SIM_DIR)/$@_PS.vvp
+	mv $(TOP)_TB.vcd $(POST_SYNTH_SIM_DIR)/
+
 #LATTICE COLORLIGHT 5A
 $(BUILD_DIR)/$(TOP).json : $(BUILD_DIR) $(BIT_DIR)
 	yosys -v3 -l $(BUILD_DIR)/synth.log -p 'attrmap -tocase keep -imap keep="true" keep=1; synth_ecp5 -top $(TOP) -json $(BUILD_DIR)/$(TOP).json; write_verilog -attr2comment $(BUILD_DIR)/$(TOP)_synth.v ' $(OBJS) -l $(BUILD_DIR)/$(TOP).rpt
