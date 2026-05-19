@@ -1,0 +1,49 @@
+[*]
+[*] GTKWave Analyzer v3.3.117 (w)1999-2023 BSI
+[*] Tue May 19 14:57:38 2026
+[*]
+[dumpfile] "/home/danielp/Documents/2026-1/Digital/Repositorios/Digital_2/LED/simulation/post_synth/led_matrix_TB.vcd"
+[dumpfile_mtime] "Tue May 19 14:36:46 2026"
+[dumpfile_size] 321261715
+[savefile] "/home/danielp/Documents/2026-1/Digital/Repositorios/Digital_2/LED/simulation/post_synth/signals.gtkw"
+[timestart] 0
+[size] 1366 739
+[pos] -184 -70
+*-17.050943 0 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] led_matrix_TB.
+[treeopen] led_matrix_TB.uut.control_led_matrix.
+[sst_width] 422
+[signals_width] 270
+[sst_expanded] 1
+[sst_vpaned_height] 198
+@28
+led_matrix_TB.uut.DIN
+led_matrix_TB.uut.RST_TIMER_s
+led_matrix_TB.uut.RST_TIMER_done
+led_matrix_TB.uut.\control_led_matrix.state[5:0]
+led_matrix_TB.uut.\led.control_led.state[3:0]
+@22
+led_matrix_TB.uut.\control_led_matrix.state[5:0]
+@28
+led_matrix_TB.uut.\control_led_matrix.init
+@200
+-Estados LED
+@28
+led_matrix_TB.uut.\control_led_matrix.rst
+@200
+-Dato LED
+@22
+led_matrix_TB.uut.\led.Color_in[23:0]
+@28
+led_matrix_TB.uut.\led.color[23:0]
+@22
+led_matrix_TB.uut.\led.contador.value[4:0]
+@28
+led_matrix_TB.uut.RST_TIMER_done
+led_matrix_TB.uut.\led.contador.rst
+@29
+led_matrix_TB.uut.\led.RST_timer_done
+@28
+led_matrix_TB.uut.\led.rst
+[pattern_trace] 1
+[pattern_trace] 0

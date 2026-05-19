@@ -2,7 +2,6 @@ BUILD_DIR = build
 SIM_DIR = simulation
 SIMPLE_SIM_DIR = $(SIM_DIR)/simple
 POST_SYNTH_SIM_DIR = $(SIM_DIR)/post_synth
-BIT_DIR = bitstream
 TESTBENCH_DIR = test_benches
 BUILDING_BLOCKS_DIR = ../building_blocks
 ECP5_SIM_CELLS=$(shell yosys-config --datdir/ecp5/cells_sim.v)
@@ -11,8 +10,7 @@ DESIGN = led_matrix
 TOP = led_matrix
 TARGET = led_matrix
 OBJS = $(wildcard *.v) $(wildcard $(BUILDING_BLOCKS_DIR)/*.v) $(wildcard ./dependencies/*.v)
-BIT_NAME = $(TARGET)
-TEST_BENCH = $(TESTBENCH_DIR)/$(TARGET)_TB.v
+
 ECP5_SIM_CELLS=$(shell yosys-config --datdir/ecp5/cells_sim.v 2>/dev/null)
 
 .PHONY : all simple_sim re_simple_sim sim_post_synth re_sim_post_synth clean
@@ -74,7 +72,7 @@ $(BIT_DIR) :
 	mkdir -p $(BIT_DIR)
 
 clean :
-	rm -rf $(BUILD_DIR)
-	rm -rf $(BIT_DIR)
 	find $(SIMPLE_SIM_DIR) -type f ! -name "*.gtkw" -delete
 	find $(POST_SYNTH_SIM_DIR) -type f ! -name "*.gtkw" -delete
+	rm -rf $(BUILD_DIR)
+	rm -rf $(BIT_DIR)

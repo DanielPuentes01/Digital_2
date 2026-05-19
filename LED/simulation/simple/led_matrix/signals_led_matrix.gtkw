@@ -1,0 +1,40 @@
+[*]
+[*] GTKWave Analyzer v3.3.117 (w)1999-2023 BSI
+[*] Tue May 19 15:09:00 2026
+[*]
+[dumpfile] "/home/danielp/Documents/2026-1/Digital/Repositorios/Digital_2/LED/simulation/simple/led_matrix/led_matrix_TB.vcd"
+[dumpfile_mtime] "Tue May 19 15:06:59 2026"
+[dumpfile_size] 33924829
+[savefile] "/home/danielp/Documents/2026-1/Digital/Repositorios/Digital_2/LED/simulation/simple/led_matrix/signals_led_matrix.gtkw"
+[timestart] 18093500
+[size] 1366 739
+[pos] -1 -1
+*-16.948751 18400000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] led_matrix_TB.
+[treeopen] led_matrix_TB.uut.
+[treeopen] led_matrix_TB.uut.led.
+[sst_width] 207
+[signals_width] 142
+[sst_expanded] 1
+[sst_vpaned_height] 198
+@28
+led_matrix_TB.uut.RST_TIMER_s
+led_matrix_TB.uut.RST_TIMER_done
+led_matrix_TB.uut.led_s
+led_matrix_TB.uut.led_done
+led_matrix_TB.uut.rst_cont
+@22
+led_matrix_TB.uut.led.Color_in[23:0]
+@28
+led_matrix_TB.uut.led.DIN
+led_matrix_TB.uut.led.load
+@200
+-RST_contador
+@28
+led_matrix_TB.uut.led.contador.rst
+@200
+-RST_LED
+@28
+led_matrix_TB.uut.led.rst
+[pattern_trace] 1
+[pattern_trace] 0

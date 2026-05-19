@@ -25,25 +25,25 @@ module control_contar_blanco (
 
   always @(negedge clk) begin
     if (rst) begin
-      state <= START;
+      state = START;
     end else begin
       case (state)
 
         START: begin
-          state <= init ? ACC : START;
+          state = init ? ACC : START;
         end
 
         ACC: begin
           if (k) begin
-            state <= DONE;
-          end else state <= ACC;
+            state = DONE;
+          end else state = ACC;
         end
 
         DONE: begin
-          state <= START;
+          state = START;
         end
 
-        default: state <= START;
+        default: state = START;
 
       endcase
     end

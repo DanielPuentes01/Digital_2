@@ -3,7 +3,8 @@ module led (
   rst,
   init,
   Color_in,
-  DIN
+  DIN,
+  done
 );
 
   input clk;
@@ -12,17 +13,15 @@ module led (
   input [23:0] Color_in;
 
   output wire DIN;
-
+  output wire done;
   wire T1H_done;
   wire T1L_done;
   wire T0H_done;
   wire T0L_done;
-  wire RST_timer_done;
   wire T1H_s;
   wire T1L_s;
   wire T0H_s;
   wire T0L_s;
-  wire RST_timer_s;
   wire k;
   wire load;
   wire sft;
@@ -30,26 +29,25 @@ module led (
   wire [4:0] cont;
 
   control_led control_led (
-      .clk(clk),
-      .rst(rst),
-      .init(init),
-      .T1H_done(T1H_done),
-      .T1L_done(T1L_done),
-      .T0H_done(T0H_done),
-      .T0L_done(T0L_done),
-      .RST_timer_done(RST_timer_done),
-      .MSBColor(color[23]),
-      .T1H_s(T1H_s),
-      .T1L_s(T1L_s),
-      .T0H_s(T0H_s),
-      .T0L_s(T0L_s),
-      .RST_timer_s(RST_timer_s),
-      .k(k),
-      .load(load),
-      .sft(sft),
-      .DIN(DIN)
-  );
-
+    .clk(clk),
+    .rst(rst),
+    .init(init),
+    .T1H_done(T1H_done),
+    .T1L_done(T1L_done),
+    .T0H_done(T0H_done),
+    .T0L_done(T0L_done),
+    .MSBColor(color[23]),
+    .T1H_s(T1H_s),
+    .T1L_s(T1L_s),
+    .T0H_s(T0H_s),
+    .T0L_s(T0L_s),
+    .done(done),
+    .k(k),
+    .load(load),
+    .sft(sft),
+    .DIN(DIN)
+  ); 
+  
   LSR #(
       .WIDTH(24)
   ) registro (
@@ -72,7 +70,7 @@ module led (
 
   txx #(
       .WIDTH(4),
-      .TIME_COMP(4'b1010)
+      .TIME_COMP(4'b1100)
   ) T1L (
       .clk(clk),
       .rst(rst),
@@ -81,8 +79,8 @@ module led (
   );
 
   txx #(
-      .WIDTH(5),
-      .TIME_COMP(5'b10101)
+      .WIDTH(4),
+      .TIME_COMP(4'b1010)
   ) T0H (
       .clk(clk),
       .rst(rst),
@@ -91,23 +89,13 @@ module led (
   );
 
   txx #(
-      .WIDTH(4),
-      .TIME_COMP(4'b1011)
+      .WIDTH(5),
+      .TIME_COMP(5'b10110)
   ) T0L (
       .clk(clk),
       .rst(rst),
       .init(T0L_s),
       .done(T0L_done)
-  );
-
-  txx #(
-      .WIDTH(11),
-      .TIME_COMP(11'b10011100010)
-  ) RST_timer (
-      .clk(clk),
-      .rst(rst),
-      .init(RST_timer_s),
-      .done(RST_timer_done)
   );
 
   acumulador #(
@@ -117,7 +105,7 @@ module led (
       .POS_EDGE(1)
   ) contador (
       .clk  (clk),
-      .rst  (rst | RST_timer_done),
+      .rst  (rst | done),
       .plus (sft),
       .value(cont)
   );

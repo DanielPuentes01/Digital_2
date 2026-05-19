@@ -1,22 +1,20 @@
 `timescale 1ns / 1ps
-module led_TB;
+module led_matrix_TB;
 reg clk;
 reg rst;
 reg init;
-reg [23:0] Color_in;
 wire DIN;
 
-led uut(
+led_matrix uut(        // <- led_matrix, no led
   .clk(clk),
   .rst(rst),
   .init(init),
-  .Color_in(Color_in),
   .DIN(DIN)
 );
 
-parameter PERIOD     = 20;
+parameter PERIOD         = 20;
 parameter real DUTY_CYCLE = 0.5;
-parameter OFFSET     = 0;
+parameter OFFSET         = 0;
 
 event reset_trigger;
 event reset_done_trigger;
@@ -44,25 +42,23 @@ initial begin
 end
 
 initial begin
-    rst          = 0;
-    init         = 0;
-    Color_in     = 24'b100100100110010100010100; // Red: 10010010, Green: 01100101, Blue: 00001010
+  rst  = 0;             
+  init = 0;
 end
 
 initial begin
-    #10 ->reset_trigger;
-    @(reset_done_trigger);
-
-    @(posedge clk);
-    init = 1;
-    @(posedge clk);
-    init = 0;
+  #10 ->reset_trigger;
+  @(reset_done_trigger);
+  @(posedge clk);
+  init = 1;
+  @(posedge clk);
+  init = 0;
 end
 
 initial begin
-    $dumpfile("led_TB.vcd");
-    $dumpvars(-1, uut);
-    #(PERIOD * 50000) $finish;
+  $dumpfile("led_matrix_TB.vcd");  
+  $dumpvars(-1, uut);
+  #(PERIOD * 500000) $finish;
 end
 
 endmodule
