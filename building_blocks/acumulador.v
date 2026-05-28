@@ -11,13 +11,20 @@ module acumulador #(
 );
   reg [WIDTH-1:0] N;
   assign value = N;
+  generate
+    if (POS_EDGE) begin : gen_POS
       always @(posedge clk) begin
-        if (rst) 
-          N = RST_VALUE;
-        else if (plus) 
-          N = N + PLUS_VALUE;
-        else 
-          N = N;
+        if (rst) N = RST_VALUE;
+        else if (plus) N = N + PLUS_VALUE;
+        else N = N;
       end
+    end else begin : gen_NEG
+      always @(negedge clk) begin
+        if (rst) N = RST_VALUE;
+        else if (plus) N = N + PLUS_VALUE;
+        else N = N;
+      end
+    end
+  endgenerate
 
 endmodule

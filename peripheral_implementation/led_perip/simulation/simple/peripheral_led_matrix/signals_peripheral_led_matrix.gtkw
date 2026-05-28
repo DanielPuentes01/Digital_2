@@ -1,0 +1,34 @@
+[*]
+[*] GTKWave Analyzer v3.3.117 (w)1999-2023 BSI
+[*] Tue May 26 16:43:33 2026
+[*]
+[dumpfile] "/home/danielp/Documents/2026-1/Digital/Repositorios/Digital_2/peripheral_implementation/led_perip/simulation/simple/peripheral_led_matrix/peripheral_led_matrix_TB.vcd"
+[dumpfile_mtime] "Tue May 26 16:42:08 2026"
+[dumpfile_size] 72188697
+[savefile] "/home/danielp/Documents/2026-1/Digital/Repositorios/Digital_2/peripheral_implementation/led_perip/simulation/simple/peripheral_led_matrix/signals_peripheral_led_matrix.gtkw"
+[timestart] 0
+[size] 1366 739
+[pos] -1 -1
+*-28.948751 248000000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] peripheral_led_matrix_TB.
+[treeopen] peripheral_led_matrix_TB.uut.
+[treeopen] peripheral_led_matrix_TB.uut.led_matrix.
+[sst_width] 207
+[signals_width] 142
+[sst_expanded] 1
+[sst_vpaned_height] 198
+@22
+peripheral_led_matrix_TB.d_in[15:0]
+peripheral_led_matrix_TB.d_out[15:0]
+peripheral_led_matrix_TB.uut.led_matrix.led.Color_in[23:0]
+@28
+peripheral_led_matrix_TB.uut.led_matrix.led.DIN
+@22
+peripheral_led_matrix_TB.uut.led_matrix.led.color[23:0]
+@28
+peripheral_led_matrix_TB.uut.led_matrix.init
+peripheral_led_matrix_TB.uut.led_matrix.rst
+peripheral_led_matrix_TB.uut.led_matrix.RST_timer.init
+peripheral_led_matrix_TB.uut.led_matrix.RST_timer.done
+[pattern_trace] 1
+[pattern_trace] 0

@@ -60,7 +60,7 @@ module led (
 
   txx #(
       .WIDTH(5),
-      .TIME_COMP(5'b10100)
+      .TIME_COMP(5'b10010)
   ) T1H (
       .clk(clk),
       .rst(rst),
@@ -70,7 +70,7 @@ module led (
 
   txx #(
       .WIDTH(4),
-      .TIME_COMP(4'b1100)
+      .TIME_COMP(4'b0111)
   ) T1L (
       .clk(clk),
       .rst(rst),
@@ -80,7 +80,7 @@ module led (
 
   txx #(
       .WIDTH(4),
-      .TIME_COMP(4'b1010)
+      .TIME_COMP(4'b0111)
   ) T0H (
       .clk(clk),
       .rst(rst),
@@ -90,7 +90,7 @@ module led (
 
   txx #(
       .WIDTH(5),
-      .TIME_COMP(5'b10110)
+      .TIME_COMP(5'b10010)
   ) T0L (
       .clk(clk),
       .rst(rst),

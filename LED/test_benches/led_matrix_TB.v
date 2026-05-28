@@ -5,14 +5,14 @@ reg rst;
 reg init;
 wire DIN;
 
-led_matrix uut(        // <- led_matrix, no led
+led_matrix uut(       
   .clk(clk),
-  .rst(rst),
+  .rst(!rst),
   .init(init),
   .DIN(DIN)
 );
 
-parameter PERIOD         = 20;
+parameter PERIOD         = 40;
 parameter real DUTY_CYCLE = 0.5;
 parameter OFFSET         = 0;
 
@@ -58,7 +58,7 @@ end
 initial begin
   $dumpfile("led_matrix_TB.vcd");  
   $dumpvars(0, uut);
-  #(PERIOD * 500000) $finish;
+  #(PERIOD * 5000000) $finish;
 end
 
 endmodule

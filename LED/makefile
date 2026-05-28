@@ -7,9 +7,9 @@ TESTBENCH_DIR = test_benches
 BUILDING_BLOCKS_DIR = ../building_blocks
 ECP5_SIM_CELLS=$(shell yosys-config --datdir/ecp5/cells_sim.v)
 
-DESIGN = led_matrix
-TOP = led_matrix
 TARGET = led_matrix
+DESIGN = $(TARGET)
+TOP = $(TARGET)
 OBJS = $(wildcard *.v) $(wildcard $(BUILDING_BLOCKS_DIR)/*.v) $(wildcard ./dependencies/*.v)
 BIT_NAME = $(TARGET)
 TEST_BENCH = $(TESTBENCH_DIR)/$(TARGET)_TB.v
