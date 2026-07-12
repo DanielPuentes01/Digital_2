@@ -20,7 +20,7 @@ all: firmware.bin
 %.bin: %.elf
 	$(OBJCOPY) -O binary $< $@
 	chmod -x $@
-	cp firmware.bin /srv/tftp/boot.bin
+# cp firmware.bin /srv/tftp/boot.bin
 firmware.elf: $(OBJECTS)
 	$(CC) $(LDFLAGS) \
 		-T linker.ld \

@@ -1,11 +1,7 @@
 module LSR #(
   parameter WIDTH = 8
-) (clk, in_B , sft , load , s_B);
-  input clk;
-  input [WIDTH-1:0]in_B;
-  input load;
-  input sft;
-  output reg [WIDTH-1:0]s_B;
+) (input clk, input [WIDTH-1:0] in_B, input sft, input load, output reg [WIDTH-1:0] s_B);
+
 
 always @(negedge clk)
   if (load) s_B = in_B ;

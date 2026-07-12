@@ -59,7 +59,7 @@ always @(posedge clk) begin
         state = SHIFT;
      end
      END:begin
-        state = START;
+        state = END;
      end
 
      default: state = START;
