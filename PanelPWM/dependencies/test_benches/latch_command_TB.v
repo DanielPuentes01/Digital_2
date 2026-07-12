@@ -12,7 +12,7 @@ wire done;
 
 latch_command #(
     .n_bits_comando(4),
-    .n_ciclos_comando(7)
+    .n_ciclos_comando(1)
 ) uut (
     .clk(clk),
     .rst(rst),

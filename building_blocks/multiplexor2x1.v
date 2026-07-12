@@ -7,4 +7,5 @@ module multiplexor2x1 #(
     output [IN_WIDTH-1:0] MUX_OUT
 );
     assign MUX_OUT = SELECT ? IN1 : IN0;
+    
 endmodule

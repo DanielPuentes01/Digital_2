@@ -6,8 +6,9 @@ module control_send_frame (
   input cont_prio_done,
   input this_prio_done,
   input cont_ABCDE_done,
+  input data_latch_done,
   input cont_col_done,
-  output reg latch,
+  output reg data_latch,
   output reg w_clk,
   output reg add_cont_col,
   output reg load_RGB,
@@ -29,9 +30,6 @@ module control_send_frame (
   parameter CLKUP1 = 5'b00010;
   parameter CLKDOWN1 = 5'b00011;
   parameter LATCHUP1 = 5'b00100;
-  parameter CLKUP2 = 5'b00101;
-  parameter CLKDOWN2 = 5'b00110;
-  parameter LATCHDOWN1 = 5'b00111;
   parameter CLKUP3 = 5'b01000;
   parameter CLKDOWN3 = 5'b01001;
   parameter RST_CONT_CLK = 5'b01010;
@@ -62,16 +60,7 @@ module control_send_frame (
           state = cont_col_done ? LATCHUP1 : ASSIGN_RGB;
         end
         LATCHUP1: begin
-          state = CLKUP2;
-        end
-        CLKUP2: begin
-          state = CLKDOWN2;
-        end
-        CLKDOWN2: begin
-          state = LATCHDOWN1;
-        end
-        LATCHDOWN1: begin
-          state = CLKUP3;
+          state = data_latch_done ? CLKUP3 : LATCHUP1;
         end
         CLKUP3: begin
           state = CLKDOWN3;
@@ -113,7 +102,7 @@ module control_send_frame (
   always @(*) begin
     case(state)
       INIT: begin
-        latch = 0;
+        data_latch = 0;
         w_clk = 0;
         add_cont_col = 0;
         load_RGB = 0;
@@ -130,7 +119,7 @@ module control_send_frame (
         done = 0;
       end
       ASSIGN_RGB: begin
-        latch = 0;
+        data_latch = 0;
         w_clk = 0;
         add_cont_col = 0;
         load_RGB = 1;
@@ -147,7 +136,7 @@ module control_send_frame (
         done = 0;
       end
       CLKUP1: begin
-        latch = 0;
+        data_latch = 0;
         w_clk = 1;
         add_cont_col = 0;
         load_RGB = 0;
@@ -164,7 +153,7 @@ module control_send_frame (
         done = 0;
       end
       CLKDOWN1: begin
-        latch = 0;
+        data_latch = 0;
         w_clk = 0;
         add_cont_col = 1;
         load_RGB = 0;
@@ -181,63 +170,12 @@ module control_send_frame (
         done = 0;
       end
       LATCHUP1: begin
-        latch = 1;
+        data_latch = 1;
         w_clk = 0;
         add_cont_col = 0;
         load_RGB = 0;
         rest_cont_prio = 0;
         OE = 1;
-        rest_this_prio = 0;
-        add_ABCDE = 0;
-        rst_cont_ABCDE = 0;
-        rst_cont_col = 0;
-        rst_this_prio = 0;
-        add_cont_clk = 0;
-        rst_cont_clk = 0;
-        rst_cont_prio = 0;
-        done = 0;
-      end
-      CLKUP2: begin
-        latch = 1;
-        w_clk = 1;
-        add_cont_col = 0;
-        load_RGB = 0;
-        rest_cont_prio = 0;
-        OE = 1;
-        rest_this_prio = 0;
-        add_ABCDE = 0;
-        rst_cont_ABCDE = 0;
-        rst_cont_col = 0;
-        rst_this_prio = 0;
-        add_cont_clk = 0;
-        rst_cont_clk = 0;
-        rst_cont_prio = 0;
-        done = 0;
-      end
-      CLKDOWN2: begin
-        latch = 1;
-        w_clk = 0;
-        add_cont_col = 0;
-        load_RGB = 0;
-        rest_cont_prio = 0;
-        OE = 1;
-        rest_this_prio = 0;
-        add_ABCDE = 0;
-        rst_cont_ABCDE = 0;
-        rst_cont_col = 0;
-        rst_this_prio = 0;
-        add_cont_clk = 0;
-        rst_cont_clk = 0;
-        rst_cont_prio = 0;
-        done = 0;
-      end
-      LATCHDOWN1: begin
-        latch = 0;
-        w_clk = 0;
-        add_cont_col = 0;
-        load_RGB = 0;
-        rest_cont_prio = 0;
-        OE = 0;
         rest_this_prio = 0;
         add_ABCDE = 0;
         rst_cont_ABCDE = 0;
@@ -249,7 +187,7 @@ module control_send_frame (
         done = 0;
       end
       CLKUP3: begin
-        latch = 0;
+        data_latch = 0;
         w_clk = 1;
         add_cont_col = 0;
         load_RGB = 0;
@@ -266,7 +204,7 @@ module control_send_frame (
         done = 0;
       end
       CLKDOWN3: begin
-        latch = 0;
+        data_latch = 0;
         w_clk = 0;
         add_cont_col = 0;
         load_RGB = 0;
@@ -283,7 +221,7 @@ module control_send_frame (
         done = 0;
       end
       RST_CONT_CLK: begin
-        latch = 0;
+        data_latch = 0;
         w_clk = 0;
         add_cont_col = 0;
         load_RGB = 0;
@@ -300,7 +238,7 @@ module control_send_frame (
         done = 0;
       end
       REST_CONT_PRIO: begin
-        latch = 0;
+        data_latch = 0;
         w_clk = 0;
         add_cont_col = 0;
         load_RGB = 0;
@@ -317,7 +255,7 @@ module control_send_frame (
         done = 0;
       end
       OE_HIGH: begin
-        latch = 0;
+        data_latch = 0;
         w_clk = 0;
         add_cont_col = 0;
         load_RGB = 0;
@@ -334,7 +272,7 @@ module control_send_frame (
         done = 0;
       end
       ASSIGN_CONT_PRIO1: begin
-        latch = 0;
+        data_latch = 0;
         w_clk = 0;
         add_cont_col = 0;
         load_RGB = 0;
@@ -351,7 +289,7 @@ module control_send_frame (
         done = 0;
       end
       RST_CONT_ABCDE: begin
-        latch = 0;
+        data_latch = 0;
         w_clk = 0;
         add_cont_col = 0;
         load_RGB = 0;
@@ -368,7 +306,7 @@ module control_send_frame (
         done = 0;
       end
       ASSIGN_CONT_PRIO2: begin
-        latch = 0;
+        data_latch = 0;
         w_clk = 0;
         add_cont_col = 0;
         load_RGB = 0;
@@ -385,7 +323,7 @@ module control_send_frame (
         done = 0;
       end
       RST_THIS_PRIO: begin
-        latch = 0;
+        data_latch = 0;
         w_clk = 0;
         add_cont_col = 0;
         load_RGB = 0;
@@ -402,7 +340,7 @@ module control_send_frame (
         done = 0;
       end
       DONE: begin
-        latch = 0;
+        data_latch = 0;
         w_clk = 0;
         add_cont_col = 0;
         load_RGB = 0;
@@ -419,7 +357,7 @@ module control_send_frame (
         done = 1;
       end
       default: begin
-        latch = 0;
+        data_latch = 0;
         w_clk = 0;
         add_cont_col = 0;
         load_RGB = 0;
