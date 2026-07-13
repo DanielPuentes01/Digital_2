@@ -22,6 +22,10 @@ module framebuffer #(
 
     initial begin
         $readmemh("framebuffer.mem", mem);
+        $display("mem[0]=%0d", mem[0]);
+        $display("mem[1]=%0d", mem[1]);
+        $display("mem[2]=%0d", mem[2]);
+        $display("mem[3]=%0d", mem[3]);
     end
 
     always @(negedge clk) begin

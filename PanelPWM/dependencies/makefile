@@ -6,9 +6,9 @@ TESTBENCH_DIR = test_benches
 BUILDING_BLOCKS_DIR = ../../building_blocks
 ECP5_SIM_CELLS=$(shell yosys-config --datdir/ecp5/cells_sim.v)
 
-DESIGN = latch_command
-TOP = latch_command
-TARGET = latch_command
+DESIGN = send_frame
+TOP = send_frame
+TARGET = send_frame
 OBJS = $(wildcard *.v) $(wildcard $(BUILDING_BLOCKS_DIR)/*.v) 
 
 .PHONY : all simple_sim re_simple_sim sim_post_synth re_sim_post_synth clean

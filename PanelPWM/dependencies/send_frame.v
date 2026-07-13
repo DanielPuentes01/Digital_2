@@ -9,7 +9,8 @@ module send_frame #(
   output wire w_clk,
   output wire [2:0] RGB1,
   output wire [2:0] RGB2,
-  output wire done
+  output wire done,
+  output wire [5:0] cont_ABCDE
 );
 
   wire cont_clk_done;
@@ -35,7 +36,7 @@ module send_frame #(
 
   wire [7:0] cont_col;
   wire [6:0] cont_clk;
-  wire [5:0] cont_ABCDE;
+  
   wire [n_bits_color-1:0] cont_prio;
   wire [n_bits_color-1:0] this_prio;
 
@@ -47,7 +48,7 @@ module send_frame #(
 
   assign framebuffer_we   = 1'b0;
   assign framebuffer_addr = 13'd0;
-  assign framebuffer_data = {3{n_bits_color}}'d0;
+  assign framebuffer_data = 0;
 
 
 
@@ -153,11 +154,11 @@ module send_frame #(
 
   comp #(.WIDTH(n_bits_color)) comp_this_prio(
     .a(this_prio),
-    .b(1),
+    .b(0),
     .eq(this_prio_done)
   );
 
-  multiplexor2x1 #(.WIDTH(1)) mux_w_clk(
+  multiplexor2x1 #(.IN_WIDTH(1)) mux_w_clk(
     .IN1(w_clk_latch),
     .IN0(w_clk_control),
     .SELECT(data_latch),

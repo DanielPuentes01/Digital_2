@@ -72,7 +72,7 @@ module control_send_frame (
           state = cont_prio_done ? OE_HIGH : REST_CONT_PRIO;
         end
         REST_CONT_PRIO: begin
-          state = CLKUP3;
+          state = data_latch_done ? CLKUP3 : REST_CONT_PRIO;
         end
         OE_HIGH: begin
           state = ASSIGN_CONT_PRIO1;
@@ -90,7 +90,7 @@ module control_send_frame (
           state = DONE;
         end
         DONE: begin
-          state = ASSIGN_RGB;
+          state = INIT;
         end
         default: begin
           state = INIT;
@@ -179,7 +179,7 @@ module control_send_frame (
         rest_this_prio = 0;
         add_ABCDE = 0;
         rst_cont_ABCDE = 0;
-        rst_cont_col = 0;
+        rst_cont_col = 1;
         rst_this_prio = 0;
         add_cont_clk = 0;
         rst_cont_clk = 0;
@@ -225,7 +225,7 @@ module control_send_frame (
         w_clk = 0;
         add_cont_col = 0;
         load_RGB = 0;
-        rest_cont_prio = 0;
+        rest_cont_prio = 1;
         OE = 0;
         rest_this_prio = 0;
         add_ABCDE = 0;
@@ -238,11 +238,11 @@ module control_send_frame (
         done = 0;
       end
       REST_CONT_PRIO: begin
-        data_latch = 0;
+        data_latch = 1;
         w_clk = 0;
         add_cont_col = 0;
         load_RGB = 0;
-        rest_cont_prio = 1;
+        rest_cont_prio = 0;
         OE = 0;
         rest_this_prio = 0;
         add_ABCDE = 0;
@@ -316,10 +316,10 @@ module control_send_frame (
         add_ABCDE = 0;
         rst_cont_ABCDE = 0;
         rst_cont_col = 0;
-        rst_this_prio = 1;
+        rst_this_prio = 0;
         add_cont_clk = 0;
         rst_cont_clk = 0;
-        rst_cont_prio = 0;
+        rst_cont_prio = 1;
         done = 0;
       end
       RST_THIS_PRIO: begin

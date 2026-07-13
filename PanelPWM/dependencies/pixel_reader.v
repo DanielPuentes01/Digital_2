@@ -21,8 +21,8 @@ module pixel_reader #(
     wire [8:0] pixel1;
     wire [8:0] pixel2;
     assign row2 = row + 6'd32;
-    assign addr1 = {row, col};
-    assign addr2 = {row2, col};
+    assign addr1 = {row, 7'b0} + col;
+    assign addr2 = {row2, 7'b0} + col;
 
     framebuffer #(
         .WIDTH(128),

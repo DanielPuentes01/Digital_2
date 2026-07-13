@@ -6,14 +6,14 @@ module acumulador_restando #(
     input rst,
     input [REG_WIDTH-1:0] initial_value,
     input less,
-    output reg out_K
+    output reg [REG_WIDTH-1:0] out_K
 );
 
-  reg [REG_WIDTH-1:0] N;
+always @(negedge clk) begin
+    if (rst)
+        out_K = initial_value;
+    else if (less)
+        out_K = out_K - LESS_VALUE;
+end
 
-  always @(negedge clk) begin
-    if (rst) N = initial_value;
-    if (less) N = N - LESS_VALUE; else N = N;
-  end
-  assign out_K = (N == 0);
 endmodule

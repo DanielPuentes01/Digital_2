@@ -1,24 +1,29 @@
 `timescale 1ns / 1ps
 
-module latch_command_TB;
+module send_frame_TB;
 
 reg clk;
 reg rst;
 reg init;
 
 wire latch;
+wire OE;
 wire w_clk;
+wire [2:0] RGB1;
+wire [2:0] RGB2;
 wire done;
 
-latch_command #(
-    .n_bits_comando(4),
-    .n_ciclos_comando(1)
+send_frame #(
+    .n_bits_color(1)
 ) uut (
     .clk(clk),
     .rst(rst),
     .init(init),
     .latch(latch),
+    .OE(OE),
     .w_clk(w_clk),
+    .RGB1(RGB1),
+    .RGB2(RGB2),
     .done(done)
 );
 
@@ -50,10 +55,10 @@ initial begin
     clk = 0;
     #OFFSET;
     forever begin
-        clk = 1'b0;
-        #(PERIOD - (PERIOD * DUTY_CYCLE));
-        clk = 1'b1;
-        #(PERIOD * DUTY_CYCLE);
+        clk = 0;
+        #(PERIOD-(PERIOD*DUTY_CYCLE));
+        clk = 1;
+        #(PERIOD*DUTY_CYCLE);
     end
 end
 
@@ -69,6 +74,7 @@ end
 // Stimulus
 //----------------------
 initial begin
+
     #10 -> reset_trigger;
     @(reset_done_trigger);
 
@@ -80,19 +86,41 @@ initial begin
 
     @(posedge done);
 
-    #(PERIOD * 10);
+    #(PERIOD*20);
+
     $finish;
+
+end
+
+//----------------------
+// Monitor
+//----------------------
+initial begin
+    $monitor(
+        "t=%0t init=%b row=%0d col=%0d RGB1=%b RGB2=%b OE=%b LATCH=%b CLK=%b",
+        $time,
+        init,
+        uut.cont_ABCDE,
+        uut.cont_col,
+        RGB1,
+        RGB2,
+        OE,
+        latch,
+        w_clk
+    );
 end
 
 //----------------------
 // Waveform
 //----------------------
 initial begin
-    $dumpfile("latch_command_TB.vcd");
+
+    $dumpfile("send_frame_TB.vcd");
     $dumpvars(-1, uut);
 
-    #(PERIOD * 50000);
+    #(PERIOD*50000);
     $finish;
+
 end
 
 endmodule

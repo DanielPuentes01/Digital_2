@@ -4,10 +4,10 @@ SIMPLE_SIM_DIR = $(SIM_DIR)/simple
 POST_SYNTH_SIM_DIR = $(SIM_DIR)/post_synth
 BIT_DIR = bitstream
 TESTBENCH_DIR = test_benches
-BUILDING_BLOCKS_DIR = ../../building_blocks
+BUILDING_BLOCKS_DIR = ../building_blocks
 ECP5_SIM_CELLS=$(shell yosys-config --datdir/ecp5/cells_sim.v)
 
-TARGET = peripheral_led_matrix
+TARGET = panel_pwm
 DESIGN = $(TARGET)
 TOP = $(TARGET)
 OBJS = $(wildcard *.v) $(wildcard $(BUILDING_BLOCKS_DIR)/*.v) $(wildcard ../../LED/dependencies/*.v) $(wildcard ../../LED/*.v)

@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram id="ov5ox4Z7NHhhv355a7kE" name="Page-1">
-        <mxGraphModel dx="294" dy="1311" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+        <mxGraphModel dx="1223" dy="1978" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -483,7 +483,7 @@
                 <mxCell id="275" value="" style="edgeStyle=none;html=1;" parent="1" source="276" target="277" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="276" value="cont_clk == 6" style="rhombus;whiteSpace=wrap;html=1;rounded=0;" parent="1" vertex="1">
+                <mxCell id="276" value="cont_clk == 10" style="rhombus;whiteSpace=wrap;html=1;rounded=0;" parent="1" vertex="1">
                     <mxGeometry x="4807.5" y="4570" width="105" height="110" as="geometry"/>
                 </mxCell>
                 <mxCell id="428" value="" style="edgeStyle=none;html=1;" parent="1" source="277" target="420" edge="1">
@@ -1064,7 +1064,7 @@
                 <mxCell id="531" style="edgeStyle=none;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="502" target="522" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="502" value="this_prio == 0" style="rhombus;whiteSpace=wrap;html=1;rounded=0;" parent="1" vertex="1">
+                <mxCell id="502" value="this_prio == 1" style="rhombus;whiteSpace=wrap;html=1;rounded=0;" parent="1" vertex="1">
                     <mxGeometry x="5315" y="7330" width="80" height="80" as="geometry"/>
                 </mxCell>
                 <mxCell id="508" value="" style="edgeStyle=none;html=1;" parent="1" source="506" target="502" edge="1">
@@ -1152,17 +1152,8 @@
                 <mxCell id="559" value="no" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
                     <mxGeometry x="3310" y="2738" width="40" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="562" value="&lt;div&gt;OE = 1&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: transparent;&quot;&gt;this_prio = this_prio-1&lt;/span&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="1">
-                    <mxGeometry x="5160" y="6800" width="120" height="60" as="geometry"/>
-                </mxCell>
-                <mxCell id="563" value="&lt;div&gt;&lt;span style=&quot;background-color: transparent;&quot;&gt;cont_prio = this_prio&lt;/span&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="1">
-                    <mxGeometry x="5160" y="6890" width="120" height="60" as="geometry"/>
-                </mxCell>
-                <mxCell id="564" value="ABCDE = ABCDE + 1&lt;div&gt;this_prio = bits_color&lt;/div&gt;" style="whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="1">
-                    <mxGeometry x="5150" y="7140" width="120" height="60" as="geometry"/>
-                </mxCell>
-                <mxCell id="565" value="cont_prio = this_prio" style="whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="1">
-                    <mxGeometry x="5150" y="7230" width="120" height="60" as="geometry"/>
+                <mxCell id="565" value="s = 4&#39;" style="text;whiteSpace=wrap;" parent="1" vertex="1">
+                    <mxGeometry x="3130" y="3010" width="60" height="40" as="geometry"/>
                 </mxCell>
             </root>
         </mxGraphModel>
