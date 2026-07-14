@@ -1,7 +1,7 @@
 module panel_pwm (
   input init,
   input clk,
-  input rst,
+  input n_rst,
   output wire [2:0] RGB1,
   output wire [2:0] RGB2,
   output wire OE,
@@ -10,7 +10,8 @@ module panel_pwm (
   output wire [4:0] ABCDE,
   output wire done
 );
-
+  wire rst;
+  assign rst = !n_rst;
   wire pre_acts;
   wire en_op;
   wire wrcfg1;
@@ -74,7 +75,7 @@ module panel_pwm (
   control_panel_pwm control_panel_pwm(
     .clk            (clk            ),
     .rst            (rst            ),
-    .init           (init           ),
+    .init           (1'b1              ),
     .pre_acts_done  (pre_acts_done  ),
     .en_op_done     (en_op_done     ),
     .wrcfg1_done    (wrcfg1_done    ),
@@ -195,7 +196,7 @@ module panel_pwm (
     .done  (vsync_done  )
   );
 
-  sendcfg #(.CFG_DATA(16'h7E08))
+  sendcfg #(.CFG_DATA(16'h3E08))
   SENDCFG1(
     .clk     (clk     ),
     .rst     (rst     ),
@@ -243,8 +244,7 @@ module panel_pwm (
     .done  (f_clk_done  )
   );
 
-  send_frame #(.n_bits_color(1))
-  u_send_frame(
+  send_frame u_send_frame(
     .clk        (clk        ),
     .rst        (rst        ),
     .init       (set_color  ),

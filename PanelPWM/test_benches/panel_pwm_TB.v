@@ -3,7 +3,7 @@
 module panel_pwm_TB;
 
     reg clk;
-    reg rst;
+    reg n_rst;
     reg init;
 
     wire [2:0] RGB1;
@@ -17,7 +17,7 @@ module panel_pwm_TB;
     panel_pwm DUT (
         .init(init),
         .clk(clk),
-        .rst(rst),
+        .n_rst(!n_rst),
         .RGB1(RGB1),
         .RGB2(RGB2),
         .OE(OE),
@@ -37,12 +37,12 @@ module panel_pwm_TB;
         $dumpfile("panel_pwm_TB.vcd");
         $dumpvars(0, panel_pwm_TB);
 
-        rst  = 1;
+        n_rst  = 1;
         init = 0;
 
         #100;
 
-        rst = 0;
+        n_rst = 0;
 
         #100;
 

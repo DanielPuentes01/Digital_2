@@ -1,15 +1,15 @@
 module pixel_reader #(
-    parameter N_BITS_COLOR = 3
+    parameter N_BITS_COLOR = 16
 )(
     input clk,
 
     input [7:0] col,
     input [5:0] row,
-    input [N_BITS_COLOR-1:0] plane,
+    input [4:0] plane,
 
     input we,
     input [12:0] wr_addr,
-    input [8:0] wr_data,
+    input [(3*N_BITS_COLOR)-1:0] wr_data,
 
     output [2:0] RGB1,
     output [2:0] RGB2
@@ -18,11 +18,11 @@ module pixel_reader #(
     wire [5:0] row2;
     wire [12:0] addr1;
     wire [12:0] addr2;
-    wire [8:0] pixel1;
-    wire [8:0] pixel2;
-    assign row2 = row + 6'd32;
-    assign addr1 = {row, 7'b0} + col;
-    assign addr2 = {row2, 7'b0} + col;
+    wire [(3*N_BITS_COLOR)-1:0] pixel1;
+    wire [(3*N_BITS_COLOR)-1:0] pixel2;
+    assign row2 = row | 6'b100000;
+    assign addr1 = {row, 7'b0} + 7'd127 - col;
+    assign addr2 = {row2, 7'b0} + 7'd127 - col;
 
     framebuffer #(
         .WIDTH(128),
@@ -44,15 +44,15 @@ module pixel_reader #(
     );
 
     assign RGB1 = {
-        pixel1[(plane-1) + (2*N_BITS_COLOR)],
-        pixel1[(plane-1) + N_BITS_COLOR],
-        pixel1[(plane-1)]
+        pixel1[(3*N_BITS_COLOR - 1) - plane],
+        pixel1[(2*N_BITS_COLOR - 1) - plane],
+        pixel1[(1*N_BITS_COLOR - 1) - plane]
     };
 
     assign RGB2 = {
-        pixel2[(plane-1) + (2*N_BITS_COLOR)],
-        pixel2[(plane-1) + N_BITS_COLOR],
-        pixel2[(plane-1)]
+        pixel2[(3*N_BITS_COLOR - 1) - plane],
+        pixel2[(2*N_BITS_COLOR - 1) - plane],
+        pixel2[(1*N_BITS_COLOR - 1) - plane]
     };
 
 endmodule

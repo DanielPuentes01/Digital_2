@@ -1,6 +1,6 @@
 module sendcfg #(
   parameter CFG_DATA = 16'h0000,
-  parameter n_CHIPS = 5'd24
+  parameter n_CHIPS = 5'd8
 ) (
   input clk,
   input rst,
@@ -19,7 +19,7 @@ module sendcfg #(
   wire cont_cfg_done;
   wire cont_chip_done;
   wire [4:0] cont_cfg;
-  wire [5:0] cont_chip;
+  wire [4:0] cont_chip;
   wire [15:0] cfg_data_reg;
 
   control_sendcfg control_sendcfg(
@@ -59,13 +59,13 @@ module sendcfg #(
     .eq(cont_cfg_done)
   );
 
-  acumulador #(.WIDTH(6), .RST_VALUE(0)) acc_cont_chip(
+  acumulador #(.WIDTH(5), .RST_VALUE(0)) acc_cont_chip(
     .clk(clk),
     .rst(rst_cont_chip),
     .plus(add_cont_chip),
     .value(cont_chip)
   );
-  comp #(.WIDTH(6)) comp_cont_chip(
+  comp #(.WIDTH(5)) comp_cont_chip(
     .a(cont_chip),
     .b(n_CHIPS),
     .eq(cont_chip_done)

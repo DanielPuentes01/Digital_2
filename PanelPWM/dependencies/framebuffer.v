@@ -1,7 +1,7 @@
 module framebuffer #(
     parameter WIDTH = 128,
     parameter HEIGHT = 64,
-    parameter PIXEL_BITS = 9
+    parameter PIXEL_BITS = 48
 )(
     input clk,
 
@@ -22,10 +22,10 @@ module framebuffer #(
 
     initial begin
         $readmemh("framebuffer.mem", mem);
-        $display("mem[0]=%0d", mem[0]);
-        $display("mem[1]=%0d", mem[1]);
-        $display("mem[2]=%0d", mem[2]);
-        $display("mem[3]=%0d", mem[3]);
+        $display("mem[0]=%h", mem[0]);
+        $display("mem[1]=%h", mem[1]);
+        $display("mem[2]=%h", mem[2]);
+        $display("mem[3]=%h", mem[3]);
     end
 
     always @(negedge clk) begin

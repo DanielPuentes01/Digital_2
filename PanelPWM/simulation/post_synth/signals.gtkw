@@ -1,36 +1,74 @@
 [*]
 [*] GTKWave Analyzer v3.3.127 (w)1999-2026 BSI
-[*] Mon Jul 13 19:48:34 2026
+[*] Tue Jul 14 21:14:07 2026
 [*]
 [dumpfile] "/home/daniel22n4/Documents/2026-1/Digital/Repositorios/Digital_2/PanelPWM/simulation/post_synth/panel_pwm_TB.vcd"
-[dumpfile_mtime] "Mon Jul 13 19:38:59 2026"
-[dumpfile_size] 153044536
+[dumpfile_mtime] "Tue Jul 14 21:11:32 2026"
+[dumpfile_size] 1451691704
 [savefile] "/home/daniel22n4/Documents/2026-1/Digital/Repositorios/Digital_2/PanelPWM/simulation/post_synth/signals.gtkw"
 [timestart] 0
 [size] 1366 689
-[pos] -27 -24
-*-19.222485 48877000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[pos] -1 -1
+*-29.346283 300236500 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
 [treeopen] panel_pwm_TB.
 [treeopen] panel_pwm_TB.DUT.
+[treeopen] panel_pwm_TB.DUT.u_send_frame.
+[treeopen] panel_pwm_TB.DUT.u_send_frame.pixel_reader.
+[treeopen] panel_pwm_TB.DUT.u_send_frame.pixel_reader.fb.
 [sst_width] 428
-[signals_width] 254
+[signals_width] 350
 [sst_expanded] 1
 [sst_vpaned_height] 188
-@28
-panel_pwm_TB.RGB1[2:0]
-panel_pwm_TB.RGB2[2:0]
-@24
+@800024
 panel_pwm_TB.ABCDE[4:0]
+@28
+(4)panel_pwm_TB.ABCDE[4:0]
+(3)panel_pwm_TB.ABCDE[4:0]
+(2)panel_pwm_TB.ABCDE[4:0]
+(1)panel_pwm_TB.ABCDE[4:0]
+(0)panel_pwm_TB.ABCDE[4:0]
+@1001200
+-group_end
 @28
 panel_pwm_TB.OE
 panel_pwm_TB.w_clk
-panel_pwm_TB.latch
-panel_pwm_TB.done
-@24
-panel_pwm_TB.DUT.\SENDCFG1.cont_chip[5:0]
 @22
-panel_pwm_TB.DUT.\SENDCFG2.cont_chip[5:0]
+panel_pwm_TB.DUT.\u_send_frame.acc_cont_col.N[7:0]
+panel_pwm_TB.DUT.\u_send_frame.acc_cont_prio.N[4:0]
+panel_pwm_TB.DUT.\u_send_frame.framebuffer_addr[12:0]
+panel_pwm_TB.DUT.\u_send_frame.pixel_reader.wr_addr[12:0]
+@c00022
+panel_pwm_TB.DUT.\u_send_frame.pixel_reader.row[5:0]
+@28
+(0)panel_pwm_TB.DUT.\u_send_frame.pixel_reader.row[5:0]
+(1)panel_pwm_TB.DUT.\u_send_frame.pixel_reader.row[5:0]
+(2)panel_pwm_TB.DUT.\u_send_frame.pixel_reader.row[5:0]
+(3)panel_pwm_TB.DUT.\u_send_frame.pixel_reader.row[5:0]
+(4)panel_pwm_TB.DUT.\u_send_frame.pixel_reader.row[5:0]
+(5)panel_pwm_TB.DUT.\u_send_frame.pixel_reader.row[5:0]
+@1401200
+-group_end
+@c00023
+panel_pwm_TB.DUT.\u_send_frame.pixel_reader.row2[5:0]
 @29
-panel_pwm_TB.DUT.\SENDCFG1.cfg_data_reg[15:0]
+(0)panel_pwm_TB.DUT.\u_send_frame.pixel_reader.row2[5:0]
+(1)panel_pwm_TB.DUT.\u_send_frame.pixel_reader.row2[5:0]
+(2)panel_pwm_TB.DUT.\u_send_frame.pixel_reader.row2[5:0]
+(3)panel_pwm_TB.DUT.\u_send_frame.pixel_reader.row2[5:0]
+(4)panel_pwm_TB.DUT.\u_send_frame.pixel_reader.row2[5:0]
+(5)panel_pwm_TB.DUT.\u_send_frame.pixel_reader.row2[5:0]
+@1401201
+-group_end
+@24
+panel_pwm_TB.DUT.\u_send_frame.pixel_reader.col[7:0]
+panel_pwm_TB.DUT.\u_send_frame.pixel_reader.plane[4:0]
+@800028
+panel_pwm_TB.DUT.RGB1[2:0]
+@28
+(0)panel_pwm_TB.DUT.RGB1[2:0]
+(1)panel_pwm_TB.DUT.RGB1[2:0]
+(2)panel_pwm_TB.DUT.RGB1[2:0]
+@1001200
+-group_end
 [pattern_trace] 1
 [pattern_trace] 0

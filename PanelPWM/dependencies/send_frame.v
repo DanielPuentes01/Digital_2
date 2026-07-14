@@ -1,6 +1,4 @@
-module send_frame #(
-  parameter n_bits_color = 1
-)(
+module send_frame (
   input clk,
   input rst,
   input init,
@@ -15,19 +13,16 @@ module send_frame #(
 
   wire cont_clk_done;
   wire cont_prio_done;
-  wire this_prio_done;
   wire cont_ABCDE_done;
   wire cont_col_done;
   wire data_latch;
   wire add_cont_col;
   wire data_latch_done;
   wire load_RGB;
-  wire rest_cont_prio;
-  wire rest_this_prio;
+  wire add_cont_prio;
   wire add_ABCDE;
   wire rst_cont_ABCDE;
   wire rst_cont_col;
-  wire rst_this_prio;
   wire add_cont_clk;
   wire rst_cont_clk;
   wire rst_cont_prio;
@@ -37,14 +32,13 @@ module send_frame #(
   wire [7:0] cont_col;
   wire [6:0] cont_clk;
   
-  wire [n_bits_color-1:0] cont_prio;
-  wire [n_bits_color-1:0] this_prio;
+  wire [4:0] cont_prio;
 
   //framebuffer signals (TEMPORAL)
 
   wire framebuffer_we;
   wire [12:0] framebuffer_addr;
-  wire [3*n_bits_color-1:0] framebuffer_data;
+  wire [47:0] framebuffer_data;
 
   assign framebuffer_we   = 1'b0;
   assign framebuffer_addr = 13'd0;
@@ -58,7 +52,6 @@ module send_frame #(
     .init(init),
     .cont_clk_done(cont_clk_done),
     .cont_prio_done(cont_prio_done),
-    .this_prio_done(this_prio_done),
     .cont_ABCDE_done(cont_ABCDE_done),
     .cont_col_done(cont_col_done),
     .data_latch_done(data_latch_done),
@@ -66,13 +59,11 @@ module send_frame #(
     .w_clk(w_clk_control),
     .add_cont_col(add_cont_col),
     .load_RGB(load_RGB),
-    .rest_cont_prio(rest_cont_prio),
+    .add_cont_prio(add_cont_prio),
     .OE(OE),
-    .rest_this_prio(rest_this_prio),
     .add_ABCDE(add_ABCDE),
     .rst_cont_ABCDE(rst_cont_ABCDE),
     .rst_cont_col(rst_cont_col),
-    .rst_this_prio(rst_this_prio),
     .add_cont_clk(add_cont_clk),
     .rst_cont_clk(rst_cont_clk),
     .rst_cont_prio(rst_cont_prio),
@@ -117,17 +108,16 @@ module send_frame #(
     .eq(cont_clk_done)
   );
 
-  acumulador_restando #(.REG_WIDTH(n_bits_color), .LESS_VALUE(1)) acc_cont_prio(
+  acumulador #(.WIDTH(5), .RST_VALUE(0)) acc_cont_prio(
     .clk(clk),
     .rst(rst_cont_prio),
-    .initial_value(1 << (this_prio - 1)),
-    .less(rest_cont_prio),
-    .out_K(cont_prio)
+    .plus(add_cont_prio),
+    .value(cont_prio)
   );
 
-  comp #(.WIDTH(n_bits_color)) comp_cont_prio(
+  comp #(.WIDTH(5)) comp_cont_prio(
     .a(cont_prio),
-    .b(0),
+    .b(5'b10000),
     .eq(cont_prio_done)
   );
 
@@ -144,19 +134,6 @@ module send_frame #(
     .eq(cont_ABCDE_done)
   );
 
-  acumulador_restando #(.REG_WIDTH(n_bits_color), .LESS_VALUE(1)) acc_this_prio(
-    .clk(clk),
-    .rst(rst_this_prio),
-    .initial_value(n_bits_color),
-    .less(rest_this_prio),
-    .out_K(this_prio)
-  );
-
-  comp #(.WIDTH(n_bits_color)) comp_this_prio(
-    .a(this_prio),
-    .b(0),
-    .eq(this_prio_done)
-  );
 
   multiplexor2x1 #(.IN_WIDTH(1)) mux_w_clk(
     .IN1(w_clk_latch),
@@ -166,18 +143,14 @@ module send_frame #(
   );
 
   pixel_reader #(
-    .N_BITS_COLOR(n_bits_color)
   ) pixel_reader (
     .clk(clk),
-
     .col(cont_col),
     .row(cont_ABCDE),
-    .plane(this_prio),
-
+    .plane(cont_prio),
     .we(framebuffer_we),
     .wr_addr(framebuffer_addr),
     .wr_data(framebuffer_data),
-
     .RGB1(RGB1),
     .RGB2(RGB2)
   );
