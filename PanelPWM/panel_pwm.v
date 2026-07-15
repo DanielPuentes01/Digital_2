@@ -23,7 +23,6 @@ module panel_pwm (
   wire sendcfg3_s;
   wire sendcfg4_s;
   wire vsync;
-  wire f_clk;
   wire set_color;
 
   wire pre_acts_done;
@@ -37,7 +36,6 @@ module panel_pwm (
   wire sendcfg3_done;
   wire sendcfg4_done;
   wire vsync_done;
-  wire f_clk_done;
   wire send_frame_done;
 
   wire latch_pre_acts;
@@ -67,10 +65,10 @@ module panel_pwm (
   wire clk_sendcfg2;
   wire clk_sendcfg3;
   wire clk_sendcfg4;
-  wire clk_f_clk;
   wire clk_send_color;
 
   wire oe_send_frame;
+  wire cont_row_done;
 
   control_panel_pwm control_panel_pwm(
     .clk            (clk            ),
@@ -87,7 +85,6 @@ module panel_pwm (
     .sendcfg3_done  (sendcfg3_done  ),
     .sendcfg4_done  (sendcfg4_done  ),
     .vsync_done     (vsync_done     ),
-    .f_clk_done     (f_clk_done     ),
     .set_color_done (send_frame_done ),
     .pre_acts       (pre_acts       ),
     .en_op          (en_op          ),
@@ -101,7 +98,6 @@ module panel_pwm (
     .sendcfg4       (sendcfg4_s       ),
     .vsync          (vsync          ),
     .set_color      (set_color      ),
-    .f_clk          (f_clk          ),
     .done           (done           )
   );
 
@@ -190,13 +186,13 @@ module panel_pwm (
   VSYNC_COMMAND(
     .clk   (clk   ),
     .rst   (rst   ),
-    .init  (vsync  ),
+    .init  (cont_row_done  ),
     .latch (latch_vsync),
     .w_clk (clk_vsync ),
     .done  (vsync_done  )
   );
 
-  sendcfg #(.CFG_DATA(16'h3E08))
+  sendcfg #(.CFG_DATA(16'h1F70))
   SENDCFG1(
     .clk     (clk     ),
     .rst     (rst     ),
@@ -206,7 +202,7 @@ module panel_pwm (
     .w_clk   (clk_sendcfg1   )
   );
 
-  sendcfg #(.CFG_DATA(16'h0FB0))
+  sendcfg #(.CFG_DATA(16'h6707))
   SENDCFG2(
     .clk     (clk     ),
     .rst     (rst     ),
@@ -216,7 +212,7 @@ module panel_pwm (
     .w_clk   (clk_sendcfg2   )
   );
 
-  sendcfg #(.CFG_DATA(16'hE79D))
+  sendcfg #(.CFG_DATA(16'h40F7))
   SENDCFG3(
     .clk     (clk     ),
     .rst     (rst     ),
@@ -226,7 +222,7 @@ module panel_pwm (
     .w_clk   (clk_sendcfg3   )
   );
 
-  sendcfg #(.CFG_DATA(16'h60B6))
+  sendcfg #(.CFG_DATA(16'h0040 ))
   SENDCFG4(
     .clk     (clk     ),
     .rst     (rst     ),
@@ -236,28 +232,22 @@ module panel_pwm (
     .w_clk   (clk_sendcfg4   )
   );
 
-  four_clk four_clk(
-    .clk   (clk   ),
-    .rst   (rst   ),
-    .init  (f_clk  ),
-    .w_clk (clk_f_clk ),
-    .done  (f_clk_done  )
-  );
-
   send_frame u_send_frame(
     .clk        (clk        ),
     .rst        (rst        ),
     .init       (set_color  ),
     .latch      (latch_send_color),
+    .vsync_done (vsync_done),
     .OE         (oe_send_frame         ),
     .w_clk      (clk_send_color     ),
     .RGB1       (RGB1_send_color       ),
     .RGB2       (RGB2_send_color       ),
     .done       (send_frame_done       ),
+    .cont_row_done_w(cont_row_done),
     .cont_ABCDE (ABCDE )
   );
 
-  assign w_clk = clk_pre_acts | clk_en_op | clk_wr_cfg_1 | clk_wr_cfg_2 | clk_wr_cfg_3 | clk_wr_cfg_4 | clk_sendcfg1 | clk_sendcfg2 | clk_sendcfg3 | clk_sendcfg4 | clk_vsync | clk_f_clk | clk_send_color;
+  assign w_clk = clk_pre_acts | clk_en_op | clk_wr_cfg_1 | clk_wr_cfg_2 | clk_wr_cfg_3 | clk_wr_cfg_4 | clk_sendcfg1 | clk_sendcfg2 | clk_sendcfg3 | clk_sendcfg4 | clk_vsync | clk_send_color;
   
   assign RGB1 =
     sendcfg1_s ? RGB_send_cfg_1 :
@@ -277,6 +267,6 @@ module panel_pwm (
 
   assign latch = latch_pre_acts | latch_en_op | latch_wr_cfg_1 | latch_wr_cfg_2 | latch_wr_cfg_3 | latch_wr_cfg_4 | latch_vsync | latch_send_color;
 
-  assign OE = set_color ? oe_send_frame : 1'b1;
+  assign OE = set_color ? oe_send_frame : 1'b0;
 
 endmodule

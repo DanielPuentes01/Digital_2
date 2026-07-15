@@ -2,12 +2,14 @@ module send_frame (
   input clk,
   input rst,
   input init,
+  input vsync_done,
   output wire latch,
   output wire OE,
   output wire w_clk,
   output wire [2:0] RGB1,
   output wire [2:0] RGB2,
   output wire done,
+  output wire cont_row_done_w,
   output wire [5:0] cont_ABCDE
 );
 
@@ -23,16 +25,26 @@ module send_frame (
   wire add_ABCDE;
   wire rst_cont_ABCDE;
   wire rst_cont_col;
+  wire rst_cont_row;
   wire add_cont_clk;
+  wire add_cont_row;
   wire rst_cont_clk;
   wire rst_cont_prio;
   wire w_clk_control;
   wire w_clk_latch;
+  wire start_4_clk;
+  wire f_clk_done;
+  wire cont_row_done;
 
   wire [7:0] cont_col;
   wire [6:0] cont_clk;
-  
+  wire [5:0] cont_row;
   wire [4:0] cont_prio;
+
+  wire OE_4clk;
+  wire OEctrl;
+
+  assign cont_row_done_w = cont_row_done;
 
   //framebuffer signals (TEMPORAL)
 
@@ -54,16 +66,22 @@ module send_frame (
     .cont_prio_done(cont_prio_done),
     .cont_ABCDE_done(cont_ABCDE_done),
     .cont_col_done(cont_col_done),
+    .cont_row_done(cont_row_done),
     .data_latch_done(data_latch_done),
     .data_latch(data_latch),
     .w_clk(w_clk_control),
+    .vsync_done(vsync_done),
     .add_cont_col(add_cont_col),
+    .add_cont_row(add_cont_row),
     .load_RGB(load_RGB),
     .add_cont_prio(add_cont_prio),
-    .OE(OE),
+    .OE(OEctrl),
     .add_ABCDE(add_ABCDE),
+    .start_4_clk(start_4_clk),
+    .f_clk_done(f_clk_done),
     .rst_cont_ABCDE(rst_cont_ABCDE),
     .rst_cont_col(rst_cont_col),
+    .rst_cont_row(rst_cont_row),
     .add_cont_clk(add_cont_clk),
     .rst_cont_clk(rst_cont_clk),
     .rst_cont_prio(rst_cont_prio),
@@ -82,6 +100,14 @@ module send_frame (
     .done(data_latch_done)
   );
 
+  four_clk four_clk(
+    .clk   (clk   ),
+    .rst   (rst   ),
+    .init  (start_4_clk  ),
+    .w_clk (OE_4clk ),
+    .done  (f_clk_done  )
+  );
+
   acumulador #(.WIDTH(8), .RST_VALUE(0)) acc_cont_col(
     .clk(clk),
     .rst(rst_cont_col),
@@ -95,6 +121,19 @@ module send_frame (
     .eq(cont_col_done)
   );
 
+  acumulador #(.WIDTH(6), .RST_VALUE(0)) acc_cont_row(
+    .clk(clk),
+    .rst(rst_cont_row),
+    .plus(add_cont_row),
+    .value(cont_row)
+  );
+
+  comp #(.WIDTH(6)) comp_cont_row(
+    .a(cont_row),
+    .b(6'd32),
+    .eq(cont_row_done)
+  );
+
   acumulador #(.WIDTH(7), .RST_VALUE(0)) acc_cont_clk(
     .clk(clk),
     .rst(rst_cont_clk),
@@ -104,7 +143,7 @@ module send_frame (
 
   comp #(.WIDTH(7)) comp_cont_clk(
     .a(cont_clk),
-    .b(7'd74),
+    .b(7'd70),
     .eq(cont_clk_done)
   );
 
@@ -142,11 +181,19 @@ module send_frame (
     .MUX_OUT(w_clk)
   );
 
+  multiplexor2x1 #(.IN_WIDTH(1)) muxOE(
+    .IN1(OE_4clk),
+    .IN0(OEctrl),
+    .SELECT(start_4_clk),
+    .MUX_OUT(OE)
+  );
+  
+
   pixel_reader #(
   ) pixel_reader (
     .clk(clk),
     .col(cont_col),
-    .row(cont_ABCDE),
+    .row(cont_row),
     .plane(cont_prio),
     .we(framebuffer_we),
     .wr_addr(framebuffer_addr),

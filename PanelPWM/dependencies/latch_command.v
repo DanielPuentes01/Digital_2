@@ -15,7 +15,6 @@ module latch_command #(
   wire add_cont_clk;
   wire cont_clk_done;
 
-  localparam [n_bits_comando-1:0] N_CICLOS = n_ciclos_comando;
 
   control_latch_command control_latch_command(
     .clk(clk),
@@ -38,7 +37,7 @@ module latch_command #(
 
   comp #(.WIDTH(n_bits_comando)) comp_cont_clk(
     .a(cont_clk),
-    .b(N_CICLOS),
+    .b(n_ciclos_comando),
     .eq(cont_clk_done)
   );
 

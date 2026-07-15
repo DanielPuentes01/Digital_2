@@ -13,7 +13,6 @@ module control_panel_pwm(
   input sendcfg3_done,
   input sendcfg4_done,
   input vsync_done,
-  input f_clk_done,
   input set_color_done,
   output reg pre_acts,
   output reg en_op,
@@ -27,7 +26,6 @@ module control_panel_pwm(
   output reg sendcfg4,
   output reg vsync,
   output reg set_color,
-  output reg f_clk,
   output reg done
 );
 
@@ -46,12 +44,10 @@ module control_panel_pwm(
   parameter [4:0] PRE_ACTS4 = 5'b01011;
   parameter [4:0] WR_CFG_3 = 5'b01100;
   parameter [4:0] SEND_CFG_4 = 5'b01101;
-  parameter [4:0] PRE_ACTS5 = 5'b01110;
   parameter [4:0] WR_CFG_4 = 5'b01111;
-  parameter [4:0] VSYNC = 5'b10000;
-  parameter [4:0] F_CLK = 5'b10001;
   parameter [4:0] SET_COLOR = 5'b10010;
   parameter [4:0] DONE = 5'b10011;
+  parameter [4:0] PRE_ACTS6 = 5'b10100;
 
   always @(posedge clk) begin
     if (rst) begin
@@ -65,55 +61,49 @@ module control_panel_pwm(
           state = pre_acts_done ? EN_OP1 : PRE_ACTS1;
         end
         EN_OP1: begin
-          state = en_op_done ? SEND_CFG_1 : EN_OP1;
+          state = en_op_done ? PRE_ACTS6 : EN_OP1;
+        end
+        PRE_ACTS6: begin
+          state = pre_acts_done ? SEND_CFG_1 : PRE_ACTS6;
         end
         SEND_CFG_1: begin
-          state = sendcfg1_done ? PRE_ACTS2 : SEND_CFG_1;
+          state = sendcfg1_done ? WR_CFG_1 : SEND_CFG_1;
         end
         PRE_ACTS2: begin
-          state = pre_acts_done ? WR_CFG_1 : PRE_ACTS2;
+          state = pre_acts_done ? SEND_CFG_2 : PRE_ACTS2;
         end
         WR_CFG_1: begin
-          state = wrcfg1_done ? SEND_CFG_2 : WR_CFG_1;
+          state = wrcfg1_done ? PRE_ACTS2 : WR_CFG_1;
         end
         SEND_CFG_2: begin
-          state = sendcfg2_done ? PRE_ACTS3 : SEND_CFG_2;
+          state = sendcfg2_done ? WR_CFG_2 : SEND_CFG_2;
         end
         PRE_ACTS3: begin
-          state = pre_acts_done ? WR_CFG_2 : PRE_ACTS3;
+          state = pre_acts_done ? SEND_CFG_3 : PRE_ACTS3;
         end
         WR_CFG_2: begin
-          state = wrcfg2_done ? SEND_CFG_3 : WR_CFG_2;
+          state = wrcfg2_done ? PRE_ACTS3 : WR_CFG_2;
         end
         SEND_CFG_3: begin
-          state = sendcfg3_done ? PRE_ACTS4 : SEND_CFG_3;
+          state = sendcfg3_done ? WR_CFG_3 : SEND_CFG_3;
         end
         PRE_ACTS4: begin
-          state = pre_acts_done ? WR_CFG_3 : PRE_ACTS4;
+          state = pre_acts_done ? SEND_CFG_4 : PRE_ACTS4;
         end
         WR_CFG_3: begin
-          state = wrcfg3_done ? SEND_CFG_4 : WR_CFG_3;
+          state = wrcfg3_done ? PRE_ACTS4 : WR_CFG_3;
         end
         SEND_CFG_4: begin
-          state = sendcfg4_done ? PRE_ACTS5 : SEND_CFG_4;
-        end
-        PRE_ACTS5: begin
-          state = pre_acts_done ? WR_CFG_4 : PRE_ACTS5;
+          state = sendcfg4_done ? WR_CFG_4 : SEND_CFG_4;
         end
         WR_CFG_4: begin
-          state = wrcfg4_done ? VSYNC : WR_CFG_4;
-        end
-        VSYNC: begin
-          state = vsync_done ? F_CLK : VSYNC;
-        end
-        F_CLK: begin
-          state = f_clk_done ? SET_COLOR : F_CLK;
+          state = wrcfg4_done ? SET_COLOR : WR_CFG_4;
         end
         SET_COLOR: begin
           state = set_color_done ? DONE : SET_COLOR;
         end
         DONE: begin
-          state = VSYNC;
+          state = SET_COLOR;
         end
         default: begin
           state = INIT;
@@ -136,8 +126,8 @@ module control_panel_pwm(
         sendcfg3 = 0;
         sendcfg4 = 0;
         set_color = 0;
-        vsync = 0;
-        f_clk = 0;
+         
+         
         done = 0;
       end 
       PRE_ACTS1: begin
@@ -152,8 +142,8 @@ module control_panel_pwm(
         sendcfg3 = 0;
         sendcfg4 = 0;
         set_color = 0;
-        vsync = 0;
-        f_clk = 0;
+         
+         
         done = 0;
       end 
       EN_OP1: begin
@@ -168,8 +158,22 @@ module control_panel_pwm(
         sendcfg3 = 0;
         sendcfg4 = 0;
         set_color = 0;
-        vsync = 0;
-        f_clk = 0;
+         
+        done = 0;
+      end 
+      PRE_ACTS6: begin
+        pre_acts = 1;
+        en_op = 0;
+        wrcfg1 = 0;
+        wrcfg2 = 0;
+        wrcfg3 = 0;
+        wrcfg4 = 0;
+        sendcfg1 = 0;
+        sendcfg2 = 0;
+        sendcfg3 = 0;
+        sendcfg4 = 0;
+        set_color = 0;
+         
         done = 0;
       end 
       SEND_CFG_1: begin
@@ -184,8 +188,8 @@ module control_panel_pwm(
         sendcfg3 = 0;
         sendcfg4 = 0;
         set_color = 0;
-        vsync = 0;
-        f_clk = 0;
+         
+         
         done = 0;
       end 
       PRE_ACTS2: begin
@@ -200,8 +204,8 @@ module control_panel_pwm(
         sendcfg3 = 0;
         sendcfg4 = 0;
         set_color = 0;
-        vsync = 0;
-        f_clk = 0;
+         
+         
         done = 0;
       end 
       WR_CFG_1: begin
@@ -216,8 +220,8 @@ module control_panel_pwm(
         sendcfg3 = 0;
         sendcfg4 = 0;
         set_color = 0;
-        vsync = 0;
-        f_clk = 0;
+         
+         
         done = 0;
       end 
       SEND_CFG_2: begin
@@ -232,8 +236,8 @@ module control_panel_pwm(
         sendcfg3 = 0;
         sendcfg4 = 0;
         set_color = 0;
-        vsync = 0;
-        f_clk = 0;
+         
+         
         done = 0;
       end 
       PRE_ACTS3: begin
@@ -248,8 +252,8 @@ module control_panel_pwm(
         sendcfg3 = 0;
         sendcfg4 = 0;
         set_color = 0;
-        vsync = 0;
-        f_clk = 0;
+         
+         
         done = 0;
       end 
       WR_CFG_2: begin
@@ -264,8 +268,7 @@ module control_panel_pwm(
         sendcfg3 = 0;
         sendcfg4 = 0;
         set_color = 0;
-        vsync = 0;
-        f_clk = 0;
+         
         done = 0;
       end 
       SEND_CFG_3: begin
@@ -280,8 +283,8 @@ module control_panel_pwm(
         sendcfg3 = 1;
         sendcfg4 = 0;
         set_color = 0;
-        vsync = 0;
-        f_clk = 0;
+         
+         
         done = 0;
       end 
       PRE_ACTS4: begin
@@ -296,8 +299,8 @@ module control_panel_pwm(
         sendcfg3 = 0;
         sendcfg4 = 0;
         set_color = 0;
-        vsync = 0;
-        f_clk = 0;
+         
+         
         done = 0;
       end 
       WR_CFG_3: begin
@@ -312,8 +315,8 @@ module control_panel_pwm(
         sendcfg3 = 0;
         sendcfg4 = 0;
         set_color = 0;
-        vsync = 0;
-        f_clk = 0;
+         
+         
         done = 0;
       end 
       SEND_CFG_4: begin
@@ -328,24 +331,8 @@ module control_panel_pwm(
         sendcfg3 = 0;
         sendcfg4 = 1;
         set_color = 0;
-        vsync = 0;
-        f_clk = 0;
-        done = 0;
-      end 
-      PRE_ACTS5: begin
-        pre_acts = 1;
-        en_op = 0;
-        wrcfg1 = 0;
-        wrcfg2 = 0;
-        wrcfg3 = 0;
-        wrcfg4 = 0;
-        sendcfg1 = 0;
-        sendcfg2 = 0;
-        sendcfg3 = 0;
-        sendcfg4 = 0;
-        set_color = 0;
-        vsync = 0;
-        f_clk = 0;
+         
+         
         done = 0;
       end 
       WR_CFG_4: begin
@@ -360,42 +347,9 @@ module control_panel_pwm(
         sendcfg3 = 0;
         sendcfg4 = 0;
         set_color = 0;
-        vsync = 0;
-        f_clk = 0;
+         
         done = 0;
-      end 
-      VSYNC: begin
-        pre_acts = 0;
-        en_op = 0;
-        wrcfg1 = 0;
-        wrcfg2 = 0;
-        wrcfg3 = 0;
-        wrcfg4 = 0;
-        sendcfg1 = 0;
-        sendcfg2 = 0;
-        sendcfg3 = 0;
-        sendcfg4 = 0;
-        set_color = 0;
-        vsync = 1;
-        f_clk = 0;
-        done = 0;
-      end 
-      F_CLK: begin
-        pre_acts = 0;
-        en_op = 0;
-        wrcfg1 = 0;
-        wrcfg2 = 0;
-        wrcfg3 = 0;
-        wrcfg4 = 0;
-        sendcfg1 = 0;
-        sendcfg2 = 0;
-        sendcfg3 = 0;
-        sendcfg4 = 0;
-        set_color = 0;
-        vsync = 0;
-        f_clk = 1;
-        done = 0;
-      end 
+      end
       SET_COLOR: begin
         pre_acts = 0;
         en_op = 0;
@@ -408,8 +362,8 @@ module control_panel_pwm(
         sendcfg3 = 0;
         sendcfg4 = 0;
         set_color = 1;
-        vsync = 0;
-        f_clk = 0;
+         
+         
         done = 0;
       end 
       DONE: begin
@@ -424,8 +378,7 @@ module control_panel_pwm(
         sendcfg3 = 0;
         sendcfg4 = 0;
         set_color = 0;
-        vsync = 0;
-        f_clk = 0;
+         
         done = 1;
       end 
       default: begin
@@ -440,8 +393,8 @@ module control_panel_pwm(
         sendcfg3 = 0;
         sendcfg4 = 0;
         set_color = 0;
-        vsync = 0;
-        f_clk = 0;
+         
+         
         done = 0;
       end
       

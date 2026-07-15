@@ -16,13 +16,14 @@ module pixel_reader #(
 );
 
     wire [5:0] row2;
-    wire [12:0] addr1;
-    wire [12:0] addr2;
+    wire [13:0] addr1;
+    wire [13:0] addr2;
     wire [(3*N_BITS_COLOR)-1:0] pixel1;
     wire [(3*N_BITS_COLOR)-1:0] pixel2;
+    
     assign row2 = row | 6'b100000;
-    assign addr1 = {row, 7'b0} + 7'd127 - col;
-    assign addr2 = {row2, 7'b0} + 7'd127 - col;
+    assign addr1 = ({row, 7'b0}) + (7'd127 - col);
+    assign addr2 = addr1 + 13'd4096;
 
     framebuffer #(
         .WIDTH(128),

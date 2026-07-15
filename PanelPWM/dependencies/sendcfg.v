@@ -38,7 +38,7 @@ module sendcfg #(
     .done(done)
   );
   
-  LSR #(.WIDTH(16)) LSR(
+  RSR #(.WIDTH(16)) RSR(
     .clk(clk),
     .in_B(CFG_DATA),
     .sft(shift_cfg),
@@ -71,7 +71,7 @@ module sendcfg #(
     .eq(cont_chip_done)
   );
 
-  assign out_RGB = {3{cfg_data_reg[15]}};
+  assign out_RGB = {3{cfg_data_reg[0]}};
 
 
 endmodule

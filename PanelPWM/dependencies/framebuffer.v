@@ -11,8 +11,8 @@ module framebuffer #(
     input [PIXEL_BITS-1:0] wr_data,
 
     // Lectura
-    input [12:0] rd_addr1,
-    input [12:0] rd_addr2,
+    input [13:0] rd_addr1,
+    input [13:0] rd_addr2,
 
     output reg [PIXEL_BITS-1:0] pixel1,
     output reg [PIXEL_BITS-1:0] pixel2
