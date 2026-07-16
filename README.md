@@ -11,7 +11,7 @@
 
 ## [Proyecto](./PanelPWM/README.md)
 
-## [Practica 1 Lab](./Laboratorio/Practica1/README.md)
+## [Practica 1 Lab](Laboratorio/Practica 1/README.md)
 
 ## [Integracion Litex + Ethernet](./PanelLED64x64)
 
