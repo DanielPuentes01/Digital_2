@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram id="ov5ox4Z7NHhhv355a7kE" name="Page-1">
-        <mxGraphModel dx="511" dy="1853" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+        <mxGraphModel dx="512" dy="1522" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -921,7 +921,7 @@
                 <mxCell id="451" value="" style="edgeStyle=none;html=1;" parent="1" source="447" target="450" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="447" value="cont_col == 128" style="rhombus;whiteSpace=wrap;html=1;rounded=0;" parent="1" vertex="1">
+                <mxCell id="447" value="cont_col == 00" style="rhombus;whiteSpace=wrap;html=1;rounded=0;" parent="1" vertex="1">
                     <mxGeometry x="5302.5" y="5880" width="105" height="90" as="geometry"/>
                 </mxCell>
                 <mxCell id="455" value="" style="edgeStyle=none;html=1;" parent="1" source="450" target="454" edge="1">
@@ -1103,7 +1103,7 @@
                 <mxCell id="573" value="" style="edgeStyle=none;html=1;" parent="1" source="571" target="447" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="571" value="&lt;div&gt;cont_prio = 0&lt;/div&gt;cont_col = cont_col + 1" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                <mxCell id="571" value="&lt;div&gt;cont_prio = 0&lt;/div&gt;cont_col = cont_col - 1" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
                     <mxGeometry x="5295" y="5800" width="120" height="60" as="geometry"/>
                 </mxCell>
                 <mxCell id="576" style="edgeStyle=none;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="577" target="578" edge="1">

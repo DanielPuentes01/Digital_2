@@ -1,4 +1,4 @@
-module control_I2C(
+  module control_I2C(
   input init,
   input clk,
   input rst,

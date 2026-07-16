@@ -1,0 +1,72 @@
+[*]
+[*] GTKWave Analyzer v3.3.125 (w)1999-2025 BSI
+[*] Fri Nov 21 16:40:38 2025
+[*]
+[dumpfile] "/home/samuel/Repositories/PTSD1/retro_paint/rtl/GPU_ASM/dependencies/memory_management_ASM/simulation/simple/memory_management_TB.vcd"
+[dumpfile_mtime] "Fri Nov 21 16:39:10 2025"
+[dumpfile_size] 138847
+[savefile] "/home/samuel/Repositories/PTSD1/retro_paint/rtl/GPU_ASM/dependencies/memory_management_ASM/simulation/simple/signals.gtkw"
+[timestart] 0
+[size] 1592 845
+[pos] -1 -1
+*-21.579710 7060000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] memory_management_TB.
+[sst_width] 290
+[signals_width] 373
+[sst_expanded] 1
+[sst_vpaned_height] 242
+@28
+memory_management_TB.clk
+memory_management_TB.rst_n
+@200
+-Entradas
+@28
+memory_management_TB.in_signal_CACHE
+memory_management_TB.in_signal_PLANE_SELECT[1:0]
+@22
+memory_management_TB.in_signal_ROW[4:0]
+@28
+memory_management_TB.in_signal_SHIFT_PLANE
+@200
+-Memory Management
+@28
+memory_management_TB.u_memory_management.in_VRAM_DONE_READ
+@820
+memory_management_TB.u_memory_management.state_name[320:1]
+@200
+-VRAM
+@28
+memory_management_TB.u_VRAM.rd
+memory_management_TB.u_VRAM.out_charged
+@22
+memory_management_TB.u_VRAM.out_data[511:0]
+@28
+memory_management_TB.u_VRAM.state[1:0]
+@22
+memory_management_TB.u_VRAM.w_COUNTER_V[4:0]
+@820
+memory_management_TB.u_VRAM.state_name[320:1]
+@200
+-Planes Cache
+@28
+memory_management_TB.u_planes_cache.in_LOAD0
+@23
+memory_management_TB.u_planes_cache.reg_cache_R0[63:0]
+@28
+memory_management_TB.u_planes_cache.in_LOAD1
+@22
+memory_management_TB.u_planes_cache.reg_cache_R1[63:0]
+@200
+-Row Cache 0
+@28
+memory_management_TB.u_row0.in_load
+@22
+memory_management_TB.u_row0.out_data[511:0]
+@200
+-Row Cache 1
+@28
+memory_management_TB.u_row1.in_load
+@22
+memory_management_TB.u_row1.out_data[511:0]
+[pattern_trace] 1
+[pattern_trace] 0

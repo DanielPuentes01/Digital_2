@@ -1,0 +1,102 @@
+BUILD_DIR = build
+SIM_DIR = simulation
+SIMPLE_SIM_DIR = $(SIM_DIR)/simple
+POST_SYNTH_SIM_DIR = $(SIM_DIR)/post_synth
+BIT_DIR = bitstream
+TESTBENCH_DIR = test_benches
+BUILDING_BLOCKS_DIR = ../building_blocks
+ECP5_SIM_CELLS = /usr/share/yosys/ecp5/cells_sim.v
+
+TARGET = panel_pwm
+DESIGN = $(TARGET)
+TOP = $(TARGET)
+OBJS = $(wildcard *.v) $(wildcard $(BUILDING_BLOCKS_DIR)/*.v) $(wildcard ./dependencies/*.v)
+BIT_NAME = $(TARGET)
+TEST_BENCH = $(TESTBENCH_DIR)/$(TARGET)_TB.v
+ECP5_SIM_CELLS = /usr/share/yosys/ecp5/cells_sim.v
+
+.PHONY : all simple_sim re_simple_sim sim_post_synth re_sim_post_synth clean
+all : simple_sim
+
+
+simple_sim : $(SIMPLE_SIM_DIR) #Crea la carpeta, los archivos de simulación y lanza GTKwave
+	iverilog -o $(SIMPLE_SIM_DIR)/$(TARGET)_TB.vvp -DBENCH -DSIM -DPASSTHROUGH_PLL -DBOARD_FREQ=27 -DCPU_FREQ=27 $(TESTBENCH_DIR)/$(TARGET)_TB.v $(OBJS)
+	vvp $(SIMPLE_SIM_DIR)/$(TARGET)_TB.vvp
+	mv $(TARGET)_TB.vcd $(SIMPLE_SIM_DIR)/
+	gtkwave $(SIMPLE_SIM_DIR)/$(TARGET)_TB.vcd $(SIMPLE_SIM_DIR)/signals.gtkw &
+re_simple_sim : $(SIMPLE_SIM_DIR) #Crea la carpeta y los archivos de simulación
+	iverilog -o $(SIMPLE_SIM_DIR)/$(TARGET)_TB.vvp -DBENCH -DSIM -DPASSTHROUGH_PLL -DBOARD_FREQ=27 -DCPU_FREQ=27 $(TESTBENCH_DIR)/$(TARGET)_TB.v $(OBJS)
+	vvp $(SIMPLE_SIM_DIR)/$(TARGET)_TB.vvp
+	mv $(TARGET)_TB.vcd $(SIMPLE_SIM_DIR)/
+
+build/$(TOP).json : $(BUILD_DIR)
+	yosys -v3 -l $(BUILD_DIR)/synth.log -p 'synth_ecp5 -top $(TOP) -json $(BUILD_DIR)/$(TOP).json ; fsm ; write_verilog -attr2comment $(BUILD_DIR)/$(TOP)_synth.v ' $(OBJS)
+#	yosys -v3 -l synth.log -p 'synth_ecp5              -top $(TOP) -json $(TOP).json;              write_verilog -attr2comment $(TOP)_synth.v' $(OBJS)
+
+sim_post_synth : build/$(TOP).json $(OBJS) $(POST_SYNTH_SIM_DIR)
+	iverilog \
+    -DNO_INCLUDES \
+    -I /usr/share/yosys/ecp5 \
+    -o $(POST_SYNTH_SIM_DIR)/sim_post_synth_PS.vvp \
+    -s $(TOP)_TB \
+    $(TESTBENCH_DIR)/$(TARGET)_TB.v \
+    $(BUILD_DIR)/$(TOP)_synth.v \
+    $(ECP5_SIM_CELLS)
+#	iverilog -o $@_PS.vpp                       -s $(TOP)_TB $(TARGET)_TB.v                  $(TOP)_synth.v              $(ECP5_SIM_CELLS) 
+
+	vvp $(POST_SYNTH_SIM_DIR)/sim_post_synth_PS.vvp
+	mv $(TOP)_TB.vcd $(POST_SYNTH_SIM_DIR)/
+	gtkwave $(POST_SYNTH_SIM_DIR)/$(TOP)_TB.vcd $(POST_SYNTH_SIM_DIR)/signals.gtkw &
+re_sim_post_synth : build/$(TOP).json $(OBJS) $(POST_SYNTH_SIM_DIR)
+	iverilog \
+    -I /usr/share/yosys/ecp5 \
+    -o $(POST_SYNTH_SIM_DIR)/sim_post_synth_PS.vvp \
+    -s $(TOP)_TB \
+    $(TESTBENCH_DIR)/$(TARGET)_TB.v \
+    $(BUILD_DIR)/$(TOP)_synth.v \
+    $(ECP5_SIM_CELLS)
+	vvp $(POST_SYNTH_SIM_DIR)/sim_post_synth_PS.vvp
+	mv $(TOP)_TB.vcd $(POST_SYNTH_SIM_DIR)/
+
+
+#LATTICE COLORLIGHT 5A
+$(BUILD_DIR)/$(TOP).json : $(BUILD_DIR) $(BIT_DIR)
+	yosys -v3 -l $(BUILD_DIR)/synth.log -p 'attrmap -tocase keep -imap keep="true" keep=1; synth_ecp5 -top $(TOP) -json $(BUILD_DIR)/$(TOP).json; write_verilog -attr2comment $(BUILD_DIR)/$(TOP)_synth.v ' $(OBJS) -l $(BUILD_DIR)/$(TOP).rpt
+$(BUILD_DIR)/$(TARGET)_out.config : build/$(TOP).json
+	nextpnr-ecp5 --json build/$(TOP).json --lpf pin_assignment.lpf --textcfg build/$(TARGET)_out.config --25k --package CABGA256 --speed 6 --timing-allow-fail --seed 1 --lpf-allow-unconstrained --log $(BUILD_DIR)/$(TOP)_pnr.log
+$(BIT_DIR)/$(BIT_NAME).bit : $(BIT_DIR) build/$(TARGET)_out.config
+	ecppack --bootaddr 0 --compress $(BUILD_DIR)/$(TARGET)_out.config --svf $(BUILD_DIR)/$(TARGET).svf --bit $@
+
+bit_gen : $(BIT_DIR)/$(BIT_NAME).bit
+
+configure_lattice : $(BIT_DIR)/$(BIT_NAME).bit
+	sudo openFPGALoader -c ft232RL --pins=0:3:4:1 -m $(BIT_DIR)/$(BIT_NAME).bit
+#                                    UART=TXD:CTS:DTR:RXD
+#                                    JTAG=TDI:TDO:TCK:TMS 
+#                                     PDB=J32:J30:J27:J31     
+#                                 FT232RL=0:3:4:1
+
+detect :
+	openFPGALoader -c ft232RL --pins=0:3:4:1 --verbose 30000000 --detect
+
+
+
+
+
+$(SIMPLE_SIM_DIR) :
+	mkdir -p $(SIMPLE_SIM_DIR)
+
+$(POST_SYNTH_SIM_DIR) :
+	mkdir -p $(POST_SYNTH_SIM_DIR)
+
+$(BUILD_DIR) :
+	mkdir -p $(BUILD_DIR)
+
+$(BIT_DIR) : 
+	mkdir -p $(BIT_DIR)
+
+clean :
+	rm -rf $(BUILD_DIR)
+	rm -rf $(BIT_DIR)
+	find $(SIMPLE_SIM_DIR) -type f ! -name "*.gtkw" -delete
+	find $(POST_SYNTH_SIM_DIR) -type f ! -name "*.gtkw" -delete

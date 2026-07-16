@@ -1,0 +1,30 @@
+[*]
+[*] GTKWave Analyzer v3.3.125 (w)1999-2025 BSI
+[*] Mon Nov 10 22:02:09 2025
+[*]
+[dumpfile] "/home/samuel/Repositories/PTSD1/retro_paint/rtl/raw_implementation/memory_management_ASM/simulation/post_synth/memory_management_TB.vcd"
+[dumpfile_mtime] "Mon Nov 10 21:55:11 2025"
+[dumpfile_size] 4240992
+[savefile] "/home/samuel/Repositories/PTSD1/retro_paint/rtl/raw_implementation/memory_management_ASM/simulation/post_synth/signals.gtkw"
+[timestart] 0
+[size] 1592 845
+[pos] -26 -24
+*-18.182276 500000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] memory_management_TB.
+[sst_width] 290
+[signals_width] 373
+[sst_expanded] 1
+[sst_vpaned_height] 241
+@28
+memory_management_TB.clk
+memory_management_TB.rst_n
+memory_management_TB.in_signal_CACHE
+memory_management_TB.in_signal_PLANE_SELECT[1:0]
+@22
+memory_management_TB.in_signal_ROW[4:0]
+@28
+memory_management_TB.in_signal_SHIFT_PLANE
+memory_management_TB.data_RGB0[2:0]
+memory_management_TB.data_RGB1[2:0]
+[pattern_trace] 1
+[pattern_trace] 0

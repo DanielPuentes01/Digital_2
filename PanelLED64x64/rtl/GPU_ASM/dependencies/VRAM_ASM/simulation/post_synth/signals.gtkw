@@ -1,0 +1,47 @@
+[*]
+[*] GTKWave Analyzer v3.3.125 (w)1999-2025 BSI
+[*] Thu Nov 20 08:37:42 2025
+[*]
+[dumpfile] "/home/samuel/Repositories/PTSD1/retro_paint/rtl/GPU_ASM/dependencies/VRAM_ASM/simulation/post_synth/VRAM_TB.vcd"
+[dumpfile_mtime] "Thu Nov 20 08:36:54 2025"
+[dumpfile_size] 2658097
+[savefile] "/home/samuel/Repositories/PTSD1/retro_paint/rtl/GPU_ASM/dependencies/VRAM_ASM/simulation/post_synth/signals.gtkw"
+[timestart] 2772200
+[size] 1592 845
+[pos] -1 -1
+*-17.356758 3160000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] VRAM_TB.
+[treeopen] VRAM_TB.u_VRAM.
+[sst_width] 442
+[signals_width] 354
+[sst_expanded] 1
+[sst_vpaned_height] 242
+@28
+VRAM_TB.clk
+VRAM_TB.wr
+@22
+VRAM_TB.wr_addr[11:0]
+VRAM_TB.in_data[7:0]
+@28
+VRAM_TB.rd
+@22
+VRAM_TB.rd_addr[5:0]
+@28
+VRAM_TB.charged
+@22
+VRAM_TB.read_data[511:0]
+@200
+-MEM
+@22
+VRAM_TB.u_VRAM.\u_MEM.in_data[7:0]
+@28
+VRAM_TB.u_VRAM.\u_MEM.wr
+@22
+VRAM_TB.u_VRAM.\u_MEM.wr_addr[11:0]
+@28
+VRAM_TB.u_VRAM.\u_MEM.rd
+@22
+VRAM_TB.u_VRAM.\u_MEM.rd_addr[9:0]
+VRAM_TB.u_VRAM.\u_MEM.out_data[31:0]
+[pattern_trace] 1
+[pattern_trace] 0

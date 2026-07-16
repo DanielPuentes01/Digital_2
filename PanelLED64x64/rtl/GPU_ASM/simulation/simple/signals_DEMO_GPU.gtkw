@@ -1,0 +1,46 @@
+[*]
+[*] GTKWave Analyzer v3.3.125 (w)1999-2025 BSI
+[*] Mon Dec  1 23:07:38 2025
+[*]
+[dumpfile] "/home/samuel/Repositories/PTSD1/retro_paint/rtl/GPU_ASM/simulation/simple/DEMO_GPU_TB.vcd"
+[dumpfile_mtime] "Mon Dec  1 22:59:16 2025"
+[dumpfile_size] 3283385
+[savefile] "/home/samuel/Repositories/PTSD1/retro_paint/rtl/GPU_ASM/simulation/simple/signals_DEMO_GPU.gtkw"
+[timestart] 0
+[size] 1592 845
+[pos] -27 -25
+*-19.574007 260000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] DEMO_GPU_TB.
+[treeopen] DEMO_GPU_TB.u_DEMO_GPU.
+[treeopen] DEMO_GPU_TB.u_DEMO_GPU.u_GPU.
+[sst_width] 290
+[signals_width] 354
+[sst_expanded] 1
+[sst_vpaned_height] 242
+@200
+-Entradas
+@28
+DEMO_GPU_TB.u_DEMO_GPU.clk
+@29
+DEMO_GPU_TB.u_DEMO_GPU.rstn
+@28
+DEMO_GPU_TB.u_DEMO_GPU.to_gpu_write
+@22
+DEMO_GPU_TB.u_DEMO_GPU.to_gpu_px_data[7:0]
+DEMO_GPU_TB.u_DEMO_GPU.to_gpu_row[5:0]
+DEMO_GPU_TB.u_DEMO_GPU.to_gpu_column[5:0]
+DEMO_GPU_TB.u_DEMO_GPU.frame_timer[23:0]
+@200
+-Salidas
+@28
+DEMO_GPU_TB.u_DEMO_GPU.w_write_available
+@22
+DEMO_GPU_TB.u_DEMO_GPU.wire_to_screen_ABCDE[4:0]
+@28
+DEMO_GPU_TB.u_DEMO_GPU.wire_to_screen_CLK
+DEMO_GPU_TB.u_DEMO_GPU.wire_to_screen_LATCH
+DEMO_GPU_TB.u_DEMO_GPU.wire_to_screen_RGB0[2:0]
+DEMO_GPU_TB.u_DEMO_GPU.wire_to_screen_RGB1[2:0]
+DEMO_GPU_TB.u_DEMO_GPU.wire_to_screen_nOE
+[pattern_trace] 1
+[pattern_trace] 0

@@ -1,0 +1,45 @@
+[*]
+[*] GTKWave Analyzer v3.3.127 (w)1999-2026 BSI
+[*] Mon Jul 13 07:23:29 2026
+[*]
+[dumpfile] "/home/daniel22n4/Documents/2026-1/Digital/Repositorios/Digital_2/PanelPWM/dependencies/simulation/simple/send_frame_TB.vcd"
+[dumpfile_mtime] "Mon Jul 13 07:17:15 2026"
+[dumpfile_size] 1552673
+[savefile] "/home/daniel22n4/Documents/2026-1/Digital/Repositorios/Digital_2/PanelPWM/dependencies/simulation/simple/signals.gtkw"
+[timestart] 0
+[size] 1366 689
+[pos] -27 -24
+*-27.200024 345755400 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] send_frame_TB.
+[treeopen] send_frame_TB.uut.
+[sst_width] 290
+[signals_width] 206
+[sst_expanded] 1
+[sst_vpaned_height] 188
+@200
+-Datos de Salida
+@28
+send_frame_TB.uut.RGB1[2:0]
+send_frame_TB.uut.RGB2[2:0]
+send_frame_TB.uut.OE
+send_frame_TB.uut.w_clk
+@29
+send_frame_TB.uut.done
+@28
+send_frame_TB.uut.latch
+@200
+-Contadores/Direcciones
+@24
+send_frame_TB.uut.cont_ABCDE[5:0]
+send_frame_TB.uut.cont_col[7:0]
+@28
+send_frame_TB.uut.cont_prio
+send_frame_TB.uut.this_prio
+@24
+send_frame_TB.uut.cont_clk[6:0]
+@200
+-Estado
+@28
+send_frame_TB.uut.control_send_frame.state[4:0]
+[pattern_trace] 1
+[pattern_trace] 0

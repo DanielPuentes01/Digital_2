@@ -1,0 +1,56 @@
+[*]
+[*] GTKWave Analyzer v3.3.125 (w)1999-2025 BSI
+[*] Thu Nov  6 00:30:59 2025
+[*]
+[dumpfile] "/home/samuel/Repositories/PTSD1/retro_paint/rtl/raw_implementation/hub75_ASM/simulation/post_synth/HUB75_TB.vcd"
+[dumpfile_mtime] "Thu Nov  6 00:28:27 2025"
+[dumpfile_size] 199973
+[savefile] "/home/samuel/Repositories/PTSD1/retro_paint/rtl/raw_implementation/hub75_ASM/simulation/post_synth/signals.gtkw"
+[timestart] 0
+[size] 1592 845
+[pos] -1 -1
+*-8.954047 3 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] HUB75_TB.
+[treeopen] HUB75_TB.u_HUB75.
+[sst_width] 330
+[signals_width] 296
+[sst_expanded] 1
+[sst_vpaned_height] 241
+@28
+HUB75_TB.clk
+HUB75_TB.rst_n
+@200
+-HUB75
+@22
+HUB75_TB.w_ABCDE[4:0]
+@28
+HUB75_TB.w_RGB0[2:0]
+HUB75_TB.w_RGB1[2:0]
+HUB75_TB.w_LATCH
+HUB75_TB.w_nOE
+HUB75_TB.w_S_CLK
+@200
+-Control Signals
+@800023
+HUB75_TB.u_HUB75.state[5:0]
+@29
+(0)HUB75_TB.u_HUB75.state[5:0]
+(1)HUB75_TB.u_HUB75.state[5:0]
+(2)HUB75_TB.u_HUB75.state[5:0]
+(3)HUB75_TB.u_HUB75.state[5:0]
+(4)HUB75_TB.u_HUB75.state[5:0]
+(5)HUB75_TB.u_HUB75.state[5:0]
+@1001201
+-group_end
+@22
+HUB75_TB.u_HUB75.auto_init[3:0]
+@28
+HUB75_TB.u_HUB75.reg_CLOCKER_INIT
+@200
+-CLOCKER
+@28
+HUB75_TB.u_HUB75.\CLOCKER.in_INIT
+HUB75_TB.u_HUB75.\CLOCKER.out_FINISH
+HUB75_TB.u_HUB75.\CLOCKER.state[2:0]
+[pattern_trace] 1
+[pattern_trace] 0

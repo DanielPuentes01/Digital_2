@@ -54,6 +54,9 @@ module panel_pwm (
   wire [2:0] RGB1_send_color;
   wire [2:0] RGB2_send_color;
 
+  wire [5:0] cont_ABCDE;
+  wire [5:0] cont_row;
+
   wire clk_pre_acts;
   wire clk_en_op;
   wire clk_wr_cfg_1;
@@ -244,7 +247,8 @@ module panel_pwm (
     .RGB2       (RGB2_send_color       ),
     .done       (send_frame_done       ),
     .cont_row_done_w(cont_row_done),
-    .cont_ABCDE (ABCDE )
+    .cont_ABCDE (cont_ABCDE ),
+    .cont_row (cont_row)
   );
 
   assign w_clk = clk_pre_acts | clk_en_op | clk_wr_cfg_1 | clk_wr_cfg_2 | clk_wr_cfg_3 | clk_wr_cfg_4 | clk_sendcfg1 | clk_sendcfg2 | clk_sendcfg3 | clk_sendcfg4 | clk_vsync | clk_send_color;
@@ -268,5 +272,7 @@ module panel_pwm (
   assign latch = latch_pre_acts | latch_en_op | latch_wr_cfg_1 | latch_wr_cfg_2 | latch_wr_cfg_3 | latch_wr_cfg_4 | latch_vsync | latch_send_color;
 
   assign OE = set_color ? oe_send_frame : 1'b0;
+
+  assign ABCDE = cont_ABCDE | cont_row;
 
 endmodule

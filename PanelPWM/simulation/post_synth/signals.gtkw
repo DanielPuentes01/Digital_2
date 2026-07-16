@@ -1,22 +1,22 @@
 [*]
 [*] GTKWave Analyzer v3.3.127 (w)1999-2026 BSI
-[*] Wed Jul 15 05:05:16 2026
+[*] Wed Jul 15 17:49:10 2026
 [*]
 [dumpfile] "/home/daniel22n4/Documents/2026-1/Digital/Repositorios/Digital_2/PanelPWM/simulation/post_synth/panel_pwm_TB.vcd"
-[dumpfile_mtime] "Wed Jul 15 04:51:09 2026"
-[dumpfile_size] 1540999361
+[dumpfile_mtime] "Wed Jul 15 17:44:40 2026"
+[dumpfile_size] 92178170
 [savefile] "/home/daniel22n4/Documents/2026-1/Digital/Repositorios/Digital_2/PanelPWM/simulation/post_synth/signals.gtkw"
-[timestart] 7502434000
+[timestart] 258700000
 [size] 1366 689
 [pos] -1 -1
-*-17.746283 7502855000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+*-24.504616 284641000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
 [treeopen] panel_pwm_TB.
 [treeopen] panel_pwm_TB.DUT.
 [treeopen] panel_pwm_TB.DUT.u_send_frame.
 [treeopen] panel_pwm_TB.DUT.u_send_frame.pixel_reader.
 [treeopen] panel_pwm_TB.DUT.u_send_frame.pixel_reader.fb.
 [sst_width] 290
-[signals_width] 294
+[signals_width] 342
 [sst_expanded] 1
 [sst_vpaned_height] 188
 @800024
@@ -51,5 +51,39 @@ panel_pwm_TB.w_clk
 panel_pwm_TB.DUT.latch
 @24
 panel_pwm_TB.DUT.\u_send_frame.acc_cont_col.N[7:0]
+@800022
+panel_pwm_TB.DUT.\u_send_frame.pixel_reader.addr1[12:0]
+@28
+(0)panel_pwm_TB.DUT.\u_send_frame.pixel_reader.addr1[12:0]
+(1)panel_pwm_TB.DUT.\u_send_frame.pixel_reader.addr1[12:0]
+(2)panel_pwm_TB.DUT.\u_send_frame.pixel_reader.addr1[12:0]
+(3)panel_pwm_TB.DUT.\u_send_frame.pixel_reader.addr1[12:0]
+(4)panel_pwm_TB.DUT.\u_send_frame.pixel_reader.addr1[12:0]
+(5)panel_pwm_TB.DUT.\u_send_frame.pixel_reader.addr1[12:0]
+(6)panel_pwm_TB.DUT.\u_send_frame.pixel_reader.addr1[12:0]
+(7)panel_pwm_TB.DUT.\u_send_frame.pixel_reader.addr1[12:0]
+(8)panel_pwm_TB.DUT.\u_send_frame.pixel_reader.addr1[12:0]
+(9)panel_pwm_TB.DUT.\u_send_frame.pixel_reader.addr1[12:0]
+(10)panel_pwm_TB.DUT.\u_send_frame.pixel_reader.addr1[12:0]
+(11)panel_pwm_TB.DUT.\u_send_frame.pixel_reader.addr1[12:0]
+(12)panel_pwm_TB.DUT.\u_send_frame.pixel_reader.addr1[12:0]
+@1001200
+-group_end
+@22
+panel_pwm_TB.DUT.\u_send_frame.pixel_reader.addr2[12:0]
+@800023
+panel_pwm_TB.DUT.\u_send_frame.pixel_reader.col[6:0]
+@29
+(0)panel_pwm_TB.DUT.\u_send_frame.pixel_reader.col[6:0]
+(1)panel_pwm_TB.DUT.\u_send_frame.pixel_reader.col[6:0]
+(2)panel_pwm_TB.DUT.\u_send_frame.pixel_reader.col[6:0]
+(3)panel_pwm_TB.DUT.\u_send_frame.pixel_reader.col[6:0]
+(4)panel_pwm_TB.DUT.\u_send_frame.pixel_reader.col[6:0]
+(5)panel_pwm_TB.DUT.\u_send_frame.pixel_reader.col[6:0]
+(6)panel_pwm_TB.DUT.\u_send_frame.pixel_reader.col[6:0]
+@1001201
+-group_end
+@22
+panel_pwm_TB.DUT.\u_send_frame.pixel_reader.row[4:0]
 [pattern_trace] 1
 [pattern_trace] 0

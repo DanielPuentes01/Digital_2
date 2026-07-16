@@ -3,12 +3,12 @@ module pixel_reader #(
 )(
     input clk,
 
-    input [7:0] col,
-    input [5:0] row,
+    input [6:0] col,//no Incluye 128
+    input [4:0] row,//no Inluye 32
     input [4:0] plane,
 
     input we,
-    input [12:0] wr_addr,
+    input [12:0] wr_addr,//8192 - 1
     input [(3*N_BITS_COLOR)-1:0] wr_data,
 
     output [2:0] RGB1,
@@ -16,14 +16,13 @@ module pixel_reader #(
 );
 
     wire [5:0] row2;
-    wire [13:0] addr1;
-    wire [13:0] addr2;
+    wire [12:0] addr1;
+    wire [12:0] addr2;
     wire [(3*N_BITS_COLOR)-1:0] pixel1;
     wire [(3*N_BITS_COLOR)-1:0] pixel2;
-    
-    assign row2 = row | 6'b100000;
-    assign addr1 = ({row, 7'b0}) + (7'd127 - col);
-    assign addr2 = addr1 + 13'd4096;
+
+    assign addr1 = {row,col};
+    assign addr2 = addr1 | 13'd4096;
 
     framebuffer #(
         .WIDTH(128),

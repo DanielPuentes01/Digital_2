@@ -1,0 +1,30 @@
+[*]
+[*] GTKWave Analyzer v3.3.125 (w)1999-2025 BSI
+[*] Tue Dec  2 13:12:15 2025
+[*]
+[dumpfile] "/home/samuel/Repositories/PTSD1/retro_paint/rtl/GPU_ASM/dependencies/VRAM_ASM/simulation/simple/MEM_TB.vcd"
+[dumpfile_mtime] "Tue Dec  2 13:10:17 2025"
+[dumpfile_size] 2820
+[savefile] "/home/samuel/Repositories/PTSD1/retro_paint/rtl/GPU_ASM/dependencies/VRAM_ASM/simulation/simple/signals_MEM.gtkw"
+[timestart] 0
+[size] 1592 845
+[pos] -27 -24
+*-19.216322 2240000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[sst_width] 290
+[signals_width] 338
+[sst_expanded] 1
+[sst_vpaned_height] 242
+@28
+MEM_TB.clk
+MEM_TB.wr
+@22
+MEM_TB.wr_addr[11:0]
+MEM_TB.in_data[7:0]
+@28
+MEM_TB.rd
+@22
+MEM_TB.rd_addr[9:0]
+@23
+MEM_TB.read_data[31:0]
+[pattern_trace] 1
+[pattern_trace] 0

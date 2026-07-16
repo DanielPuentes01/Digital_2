@@ -1,0 +1,70 @@
+<mxfile host="65bd71144e">
+    <diagram id="X7jyjz8Rna76hVVrPz5H" name="Page-1">
+        <mxGraphModel dx="1590" dy="1487" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="1169" background="#63FF88" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="2" value="Write" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;overflow=hidden;fillColor=default;top=0;left=0;bottom=0;right=0;pointerEvents=1;" vertex="1" parent="1">
+                    <mxGeometry x="100" y="100" width="293" height="87" as="geometry">
+                        <mxRectangle width="293" height="87" as="alternateBounds"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="3" value="Entrada para escribir Pixel Data a la columna y fila descritas en Column y Row" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;overflow=hidden;fillColor=default;top=0;left=0;bottom=0;right=0;pointerEvents=1;" vertex="1" parent="1">
+                    <mxGeometry x="393" y="100" width="407" height="87" as="geometry">
+                        <mxRectangle width="407" height="87" as="alternateBounds"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="4" value="[7:0] Pixel Data" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;overflow=hidden;fillColor=default;top=0;left=0;bottom=0;right=0;pointerEvents=1;" vertex="1" parent="1">
+                    <mxGeometry x="100" y="187" width="293" height="86" as="geometry">
+                        <mxRectangle width="293" height="86" as="alternateBounds"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="5" value="Byte de color" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;overflow=hidden;fillColor=default;top=0;left=0;bottom=0;right=0;pointerEvents=1;" vertex="1" parent="1">
+                    <mxGeometry x="393" y="187" width="407" height="86" as="geometry">
+                        <mxRectangle width="407" height="86" as="alternateBounds"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="6" value="[5:0] Column" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;overflow=hidden;fillColor=default;top=0;left=0;bottom=0;right=0;pointerEvents=1;" vertex="1" parent="1">
+                    <mxGeometry x="100" y="273" width="293" height="86" as="geometry">
+                        <mxRectangle width="293" height="86" as="alternateBounds"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="7" value="Columna de el pixel" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;overflow=hidden;fillColor=default;top=0;left=0;bottom=0;right=0;pointerEvents=1;" vertex="1" parent="1">
+                    <mxGeometry x="393" y="273" width="407" height="86" as="geometry">
+                        <mxRectangle width="407" height="86" as="alternateBounds"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="8" value="[5:0]Row" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;overflow=hidden;fillColor=default;top=0;left=0;bottom=0;right=0;pointerEvents=1;" vertex="1" parent="1">
+                    <mxGeometry x="100" y="359" width="293" height="85" as="geometry">
+                        <mxRectangle width="293" height="85" as="alternateBounds"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="9" value="Fila de el pixel" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;overflow=hidden;fillColor=default;top=0;left=0;bottom=0;right=0;pointerEvents=1;" vertex="1" parent="1">
+                    <mxGeometry x="393" y="359" width="407" height="85" as="geometry">
+                        <mxRectangle width="407" height="85" as="alternateBounds"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="10" value="Image/Palette" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;overflow=hidden;fillColor=default;top=0;left=0;bottom=0;right=0;pointerEvents=1;" vertex="1" parent="1">
+                    <mxGeometry x="100" y="444" width="293" height="85" as="geometry">
+                        <mxRectangle width="293" height="85" as="alternateBounds"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="11" value="Seleción de Imagen(0) o Paleta de colores(1), impide la escritura a Imagen cuando se encuentra en paleta de colores." style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;overflow=hidden;fillColor=default;top=0;left=0;bottom=0;right=0;pointerEvents=1;" vertex="1" parent="1">
+                    <mxGeometry x="393" y="444" width="407" height="85" as="geometry">
+                        <mxRectangle width="407" height="85" as="alternateBounds"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="12" value="Image/Overlay" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;overflow=hidden;fillColor=default;top=0;left=0;bottom=0;right=0;pointerEvents=1;" vertex="1" parent="1">
+                    <mxGeometry x="100" y="529" width="293" height="85" as="geometry">
+                        <mxRectangle width="293" height="85" as="alternateBounds"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="13" value="Selección de escritura a Imagen(0) o Overlay(1). Si se encuentra en Paleta de colores ignora la escritura a Imagen" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;overflow=hidden;fillColor=default;top=0;left=0;bottom=0;right=0;pointerEvents=1;" vertex="1" parent="1">
+                    <mxGeometry x="393" y="529" width="407" height="85" as="geometry">
+                        <mxRectangle width="407" height="85" as="alternateBounds"/>
+                    </mxGeometry>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>

@@ -1,0 +1,44 @@
+[*]
+[*] GTKWave Analyzer v3.3.125 (w)1999-2025 BSI
+[*] Fri Nov  7 16:54:57 2025
+[*]
+[dumpfile] "/home/samuel/Repositories/PTSD1/retro_paint/rtl/raw_implementation/planes_cache_ASM/simulation/simple/planes_cache_TB.vcd"
+[dumpfile_mtime] "Fri Nov  7 16:51:53 2025"
+[dumpfile_size] 5244
+[savefile] "/home/samuel/Repositories/PTSD1/retro_paint/rtl/raw_implementation/planes_cache_ASM/simulation/simple/signals.gtkw"
+[timestart] 840300
+[size] 1592 845
+[pos] -1 -1
+*-15.501055 1009100 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] planes_cache_TB.
+[sst_width] 43
+[signals_width] 247
+[sst_expanded] 0
+[sst_vpaned_height] 242
+@28
+planes_cache_TB.clk
+@22
+planes_cache_TB.R[63:0]
+planes_cache_TB.G[63:0]
+planes_cache_TB.B[63:0]
+@28
+planes_cache_TB.LOAD0
+planes_cache_TB.LOAD1
+planes_cache_TB.SHIFT
+@800022
+planes_cache_TB.plane_RGB01[5:0]
+@28
+(0)planes_cache_TB.plane_RGB01[5:0]
+(1)planes_cache_TB.plane_RGB01[5:0]
+(2)planes_cache_TB.plane_RGB01[5:0]
+(3)planes_cache_TB.plane_RGB01[5:0]
+(4)planes_cache_TB.plane_RGB01[5:0]
+(5)planes_cache_TB.plane_RGB01[5:0]
+@1001200
+-group_end
+@23
+planes_cache_TB.u_planes_cache.reg_cache_R0[63:0]
+@22
+planes_cache_TB.u_planes_cache.reg_cache_R1[63:0]
+[pattern_trace] 1
+[pattern_trace] 0

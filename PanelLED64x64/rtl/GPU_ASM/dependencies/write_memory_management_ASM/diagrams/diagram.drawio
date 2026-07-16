@@ -1,0 +1,22 @@
+<mxfile host="65bd71144e">
+    <diagram id="3-jFNIKWvRAqlHhnwN3_" name="Page-1">
+        <mxGraphModel dx="882" dy="533" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="1169" background="#FF984A" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="5" style="edgeStyle=none;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="2" target="4">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="2" value="in_image_or_overlay&lt;br&gt;in_write&lt;br&gt;[7:0]in_px_data&lt;br&gt;&lt;br&gt;[11:0]in_addr&lt;br&gt;&lt;br&gt;[7:0]out_synced_px_data &lt;br&gt;[11:0]out_synced_addr&lt;br&gt;out_synced_write&lt;br&gt;synced_image_or_overlay" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="140" y="140" width="340" height="220" as="geometry"/>
+                </mxCell>
+                <mxCell id="4" value="out_synced_write = in_write&lt;br&gt;synced_image_or_overlay=in_image_or_overlay&amp;nbsp;&lt;br&gt;out_synced_addr= in_addr&lt;br&gt;out_synced_px_data = in_px_data" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="155" y="420" width="310" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="6" value="CONTROL" style="externalPins=1;recursiveResize=0;shadow=0;dashed=0;align=center;html=1;strokeWidth=1;shape=mxgraph.rtl.abstract.entity;container=1;collapsible=0;kind=sequential;drawPins=1;left=5;right=4;bottom=0;top=0;leftArr=%3Aclk,write%3Ain,%5B8%5Dpx_data%3Ain,%5B12%5Daddr%3Ain,image%2Foverlay%3Ain;rightArr=synced_wr_image%3Aout,%5B8%5Dsynced_px_data%3Aout,%5B12%5Dsynced_addr%3Aout,synced_wr_overlay%3Aout;" vertex="1" parent="1">
+                    <mxGeometry x="650" y="190" width="300" height="200" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>

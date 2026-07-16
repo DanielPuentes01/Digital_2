@@ -1,0 +1,57 @@
+[*]
+[*] GTKWave Analyzer v3.3.125 (w)1999-2025 BSI
+[*] Thu Nov  6 00:02:05 2025
+[*]
+[dumpfile] "/home/samuel/Repositories/PTSD1/retro_paint/rtl/raw_implementation/hub75_ASM/simulation/simple/HUB75_TB.vcd"
+[dumpfile_mtime] "Wed Nov  5 23:58:18 2025"
+[dumpfile_size] 6244
+[savefile] "/home/samuel/Repositories/PTSD1/retro_paint/rtl/raw_implementation/hub75_ASM/simulation/simple/signals.gtkw"
+[timestart] 0
+[size] 1592 845
+[pos] -1 -1
+*-7.883807 940 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] HUB75_TB.
+[treeopen] HUB75_TB.u_HUB75.
+[treeopen] HUB75_TB.u_HUB75.CLOCKER.
+[sst_width] 290
+[signals_width] 329
+[sst_expanded] 1
+[sst_vpaned_height] 242
+@28
+HUB75_TB.clk
+@200
+-HUB75
+@28
+HUB75_TB.rst_n
+@22
+HUB75_TB.u_HUB75.ABCDE[4:0]
+@c00028
+HUB75_TB.u_HUB75.reg_RGB0[2:0]
+@28
+(0)HUB75_TB.u_HUB75.reg_RGB0[2:0]
+(1)HUB75_TB.u_HUB75.reg_RGB0[2:0]
+(2)HUB75_TB.u_HUB75.reg_RGB0[2:0]
+@1401200
+-group_end
+@28
+HUB75_TB.u_HUB75.reg_RGB1[2:0]
+HUB75_TB.u_HUB75.w_SCREEN_CLOCK
+HUB75_TB.u_HUB75.LATCH
+@29
+HUB75_TB.u_HUB75.nOE
+@200
+-Control Signals
+@28
+HUB75_TB.u_HUB75.reg_CLOCKER_INIT
+HUB75_TB.u_HUB75.reg_CLOCKER_RST
+HUB75_TB.u_HUB75.state[2:0]
+@820
+HUB75_TB.u_HUB75.state_name[320:1]
+@200
+-Clocker
+@28
+HUB75_TB.u_HUB75.CLOCKER.state[1:0]
+@820
+HUB75_TB.u_HUB75.CLOCKER.state_name[320:1]
+[pattern_trace] 1
+[pattern_trace] 0

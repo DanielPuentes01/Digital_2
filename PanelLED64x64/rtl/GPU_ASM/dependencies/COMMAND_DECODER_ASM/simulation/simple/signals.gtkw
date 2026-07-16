@@ -1,0 +1,50 @@
+[*]
+[*] GTKWave Analyzer v3.3.125 (w)1999-2025 BSI
+[*] Tue Nov 25 22:43:05 2025
+[*]
+[dumpfile] "/home/samuel/Repositories/PTSD1/retro_paint/rtl/GPU_ASM/dependencies/COMMAND_DECODER_ASM/simulation/simple/COMMAND_DECODER_TB.vcd"
+[dumpfile_mtime] "Tue Nov 25 22:42:48 2025"
+[dumpfile_size] 2336
+[savefile] "/home/samuel/Repositories/PTSD1/retro_paint/rtl/GPU_ASM/dependencies/COMMAND_DECODER_ASM/simulation/simple/signals.gtkw"
+[timestart] 330600
+[size] 1592 845
+[pos] -1 -1
+*-17.215157 660000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] COMMAND_DECODER_TB.
+[sst_width] 290
+[signals_width] 293
+[sst_expanded] 1
+[sst_vpaned_height] 242
+@28
+COMMAND_DECODER_TB.clk
+COMMAND_DECODER_TB.rst
+@200
+-Entradas
+@28
+COMMAND_DECODER_TB.other_write
+COMMAND_DECODER_TB.other_px_data[7:0]
+@24
+COMMAND_DECODER_TB.other_row[5:0]
+COMMAND_DECODER_TB.other_column[5:0]
+@28
+COMMAND_DECODER_TB.other_image_palette
+COMMAND_DECODER_TB.other_image_overlay
+COMMAND_DECODER_TB.other_VRAM_available
+@200
+-Salidas
+@28
+COMMAND_DECODER_TB.RST
+COMMAND_DECODER_TB.write_available
+COMMAND_DECODER_TB.write
+COMMAND_DECODER_TB.px_data[7:0]
+@25
+COMMAND_DECODER_TB.addr[11:0]
+@28
+COMMAND_DECODER_TB.image_or_overlay
+COMMAND_DECODER_TB.image_select
+@200
+-Estado
+@28
+COMMAND_DECODER_TB.u_COMMAND_DECODER.switch_state
+[pattern_trace] 1
+[pattern_trace] 0

@@ -10,7 +10,8 @@ module send_frame (
   output wire [2:0] RGB2,
   output wire done,
   output wire cont_row_done_w,
-  output wire [5:0] cont_ABCDE
+  output wire [5:0] cont_ABCDE,
+  output wire [5:0] cont_row
 );
 
   wire cont_clk_done;
@@ -38,7 +39,6 @@ module send_frame (
 
   wire [7:0] cont_col;
   wire [6:0] cont_clk;
-  wire [5:0] cont_row;
   wire [4:0] cont_prio;
 
   wire OE_4clk;
@@ -108,16 +108,17 @@ module send_frame (
     .done  (f_clk_done  )
   );
 
-  acumulador #(.WIDTH(8), .RST_VALUE(0)) acc_cont_col(
+  acumulador_restando #(.REG_WIDTH(8)) acc_cont_col(
     .clk(clk),
     .rst(rst_cont_col),
-    .plus(add_cont_col),
-    .value(cont_col)
+    .initial_value(128),
+    .less(add_cont_col),
+    .out_K(cont_col)
   );
 
   comp #(.WIDTH(8)) comp_cont_col(
     .a(cont_col),
-    .b(8'd128),
+    .b(0),
     .eq(cont_col_done)
   );
 
@@ -192,7 +193,7 @@ module send_frame (
   pixel_reader #(
   ) pixel_reader (
     .clk(clk),
-    .col(cont_col),
+    .col(cont_col-1),
     .row(cont_row),
     .plane(cont_prio),
     .we(framebuffer_we),

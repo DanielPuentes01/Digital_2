@@ -1,0 +1,57 @@
+[*]
+[*] GTKWave Analyzer v3.3.127 (w)1999-2026 BSI
+[*] Mon Jul 13 11:58:32 2026
+[*]
+[dumpfile] "/home/daniel22n4/Documents/2026-1/Digital/Repositorios/Digital_2/PanelPWM/simulation/simple/panel_pwm_TB.vcd"
+[dumpfile_mtime] "Mon Jul 13 11:50:21 2026"
+[dumpfile_size] 3310425
+[savefile] "/home/daniel22n4/Documents/2026-1/Digital/Repositorios/Digital_2/PanelPWM/simulation/simple/signals.gtkw"
+[timestart] 71900000
+[size] 1366 689
+[pos] -1 -1
+*-24.460989 202279000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] panel_pwm_TB.
+[treeopen] panel_pwm_TB.DUT.
+[treeopen] panel_pwm_TB.DUT.u_send_frame.
+[treeopen] panel_pwm_TB.DUT.u_send_frame.pixel_reader.
+[sst_width] 291
+[signals_width] 150
+[sst_expanded] 1
+[sst_vpaned_height] 188
+@200
+-Salidas Fisicas
+@28
+panel_pwm_TB.RGB1[2:0]
+panel_pwm_TB.RGB2[2:0]
+panel_pwm_TB.OE
+@24
+panel_pwm_TB.ABCDE[4:0]
+@28
+panel_pwm_TB.w_clk
+panel_pwm_TB.latch
+panel_pwm_TB.DUT.control_panel_pwm.sendcfg1
+panel_pwm_TB.DUT.control_panel_pwm.sendcfg2
+panel_pwm_TB.DUT.control_panel_pwm.sendcfg3
+panel_pwm_TB.DUT.control_panel_pwm.sendcfg4
+panel_pwm_TB.DUT.control_panel_pwm.wrcfg1
+panel_pwm_TB.DUT.control_panel_pwm.wrcfg2
+panel_pwm_TB.DUT.control_panel_pwm.wrcfg3
+panel_pwm_TB.DUT.control_panel_pwm.wrcfg4
+@24
+panel_pwm_TB.DUT.u_send_frame.cont_col[7:0]
+panel_pwm_TB.DUT.u_send_frame.cont_ABCDE[5:0]
+panel_pwm_TB.DUT.u_send_frame.cont_clk[6:0]
+@28
+panel_pwm_TB.DUT.u_send_frame.clk
+@22
+panel_pwm_TB.DUT.u_send_frame.pixel_reader.pixel1[8:0]
+panel_pwm_TB.DUT.u_send_frame.pixel_reader.pixel2[8:0]
+panel_pwm_TB.DUT.u_send_frame.pixel_reader.col[7:0]
+@24
+panel_pwm_TB.DUT.u_send_frame.pixel_reader.row[5:0]
+panel_pwm_TB.DUT.u_send_frame.pixel_reader.row2[5:0]
+panel_pwm_TB.DUT.u_send_frame.pixel_reader.fb.rd_addr2[12:0]
+@25
+panel_pwm_TB.DUT.u_send_frame.pixel_reader.fb.rd_addr1[12:0]
+[pattern_trace] 1
+[pattern_trace] 0
