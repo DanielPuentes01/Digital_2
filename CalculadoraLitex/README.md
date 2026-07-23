@@ -1,5 +1,8 @@
-Calculadora con litex:
-Como ejecutar:
+### Calculadora con litex
+
+Integracion de la calculadora en hardware realizada en Electrónica Digital 1 con el framework de litex para la generacion del SoC.
+
+## Como ejecutar:
 
 cd Cores
 

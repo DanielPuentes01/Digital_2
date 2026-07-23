@@ -11,18 +11,18 @@ class ScreenController64x64(Module, AutoCSR):
         self.px_data_in = px_data = CSRStorage(8)
         self.column = column = CSRStorage(6)
         self.row = row = CSRStorage(6)
-        self.image_or_palette = img_signal1 = CSRConstant(0)
-        self.image_or_overlay = img_signal2 = CSRConstant(0)
+        self.image_or_palette = img_signal1 = CSRStorage(1)
+        self.image_or_overlay = img_signal2 = CSRStorage(1)
 
         self.specials += Instance("GPU",
-                i_clk = ClockSignal("sys"), # Reloj de 25 MHz
+                i_clk = ClockSignal("sys"), 
                 i_rst_n = ResetSignal("sys"),
                 i_write = we.storage,
                 i_px_data = px_data.storage,
                 i_column = column.storage,
                 i_row = row.storage,
-                i_image_palette = img_signal1.constant,
-                i_image_overlay = img_signal2.constant,
+                i_image_palette = 0, #img_signal1.storage,
+                i_image_overlay = 0, #img_signal2.storage,
                 o_to_screen_RGB0 = out_pins.to_screen_RGB0,
                 o_to_screen_RGB1 = out_pins.to_screen_RGB1,
                 o_to_screen_CLK = out_pins.to_screen_CLK,

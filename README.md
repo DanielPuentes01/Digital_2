@@ -7,11 +7,15 @@
 *Daniel Santiango Puentes Villabona - 1052378730*
 
 
-## [Calculadora ](./CalculadoraLitex)
+## [Calculadora ](./CalculadoraLitex/)
 
 ## [Proyecto](./PanelPWM/README.md)
 
-## [Practica 1 Lab](./Laboratorio)
+## [Matriz LED WS2812](./LED8x8/)
+
+## [Protocolo I2C](./I2C/)
+  
+## [Practica 1 Lab](./Laboratorio/Practica1/README.md)
 
 ## [Integracion Litex + Ethernet](./PanelLED64x64)
 

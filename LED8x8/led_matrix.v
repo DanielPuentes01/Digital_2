@@ -1,13 +1,11 @@
 module led_matrix (
-    clk,
-    init,
-    rst,
-    DIN
+    input clk,
+    input init,
+    input rst,
+    output wire DIN
 );
 
-    input clk;
-    input init;
-    input rst;
+
 
     reg [23:0] mem1 [0:63];
     reg [23:0] mem2 [0:63];
@@ -16,7 +14,16 @@ module led_matrix (
     reg [23:0] mem5 [0:63];
     reg [23:0] mem6 [0:63];
 
-    output wire DIN;
+    wire led_s;
+    wire led_done;
+    wire RST_TIMER_s;
+    wire RST_TIMER_done;
+    wire add;
+    wire rst_cont;
+    wire load_color;
+    wire [6:0] cont;
+    wire z;
+
 
     initial begin
         $readmemh("led_matrix1.mem", mem1);
@@ -59,15 +66,7 @@ module led_matrix (
       .MUX_OUT(mem_out)
     );
 
-    wire led_s;
-    wire led_done;
-    wire RST_TIMER_s;
-    wire RST_TIMER_done;
-    wire add;
-    wire rst_cont;
-    wire load_color;
-    wire [6:0] cont;
-    wire z;
+    
 
     control_led_matrix control_led_matrix (
         .clk(clk),

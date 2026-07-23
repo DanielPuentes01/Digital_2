@@ -8,7 +8,7 @@ module multiplexor6x1 #(
     input [IN_WIDTH-1:0] IN100,
     input [IN_WIDTH-1:0] IN101,
     input [2:0] SELECT,
-    output [IN_WIDTH-1:0] MUX_OUT
+    output  reg [IN_WIDTH-1:0] MUX_OUT
 );
     always @(*) begin
       case (SELECT)

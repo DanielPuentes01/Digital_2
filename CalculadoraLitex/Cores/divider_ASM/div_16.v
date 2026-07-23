@@ -1,51 +1,36 @@
-module div_16 (
-    clk,
-    rst,
-    init_in,
-    A,
-    B,
-    R,
-    Q,
-    done
+module div_32 (
+    input clk,
+    input rst,
+    input init_in,
+    input [31:0] A,
+    input [31:0] B,
+    output wire [31:0] R,  //resto
+    output wire [31:0] Q,  //coeficiente
+    output done
 );
 
-  input rst;
-  input clk;
-  input init_in;
-  input [15:0] A;
-  input [15:0] B;
-  output [15:0] R;
-  output [15:0] Q;
-  output done;
 
 
-  wire w_init, w_shift, w_loadA;
-
+  wire w_ctl_rst, w_shift, w_load_R, w_decrement, w_K;
   wire [16:0] R_Sub;
- 
 
-  wire w_DEC, w_K, w_R;
-
-
-  lsr_div lsr_d (
-      .clk(clk),
-      .rst(w_init),
-      .DV_in(A),
-      .IN_A(R_Sub),
-      .INIT(w_init),
-      .SH(w_shift),
-      .loadA(w_loadA),
-      .in_Q(Q),
-      .DV0(w_DV0),
-      .OUT_R(R)
+  lsr_div u_lsr_div (
+      .clk   (clk),
+      .rst   (w_ctl_rst),
+      .base_A(A),
+      .shift (w_shift),
+      .new_R (R_Sub),
+      .load_R(w_load_R),
+      .R     (R),          //resto
+      .Q     (Q)           //coeficiente
   );
 
 
   sumador #(
       .N_BITS(17),
       .CP2(1)
-  ) sb (
-      .A(Q),
+  ) resta (
+      .A(R),
       .B(B),
       .out_SUM(R_Sub)
   );
@@ -54,28 +39,25 @@ module div_16 (
       .REG_WIDTH (5),
       .RST_VALUE (16),
       .LESS_VALUE(1)
-  ) ctr_vd (
-      .rst  (w_init),
+  ) n_terminos (
+      .rst  (w_ctl_rst),
       .clk  (clk),
-      .less (w_DEC),
+      .less (w_decrement),
       .out_K(w_K)
   );
 
-  control_div ctl_dv (
-      .clk(clk),
-      .rst(rst),
-      .init_in(init_in),
-      .MSB(R_Sub[16]),
-      .in_K(w_K),
-      .INIT(w_init),
-      .SH(w_shift),
-      .DEC(w_DEC),
-      .loadA(w_loadA),
-      .DONE(done),
-      .DV0(w_DV0)
+  control_div u_control_div (
+      .clk      (clk),
+      .rst      (rst),
+      .init_    (init_in),
+      .R_B_MSB  (R_Sub[16]),
+      .in_K     (w_K),
+      .ctl_rst  (w_ctl_rst),
+      .load_R   (w_load_R),
+      .shift    (w_shift),
+      .decrement(w_decrement),
+      .DONE     (done)
   );
-
-
 
 endmodule
 

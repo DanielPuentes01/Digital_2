@@ -182,16 +182,9 @@ class BaseSoC(SoCCore):
                 clock_pads = self.platform.request("eth_clocks", eth_phy),
                 pads       = self.platform.request("eth", eth_phy),
                 tx_delay   = 0e-9)
-            self.add_etherbone(phy=self.ethphy, ip_address=eth_ip, with_ethmac=True, data_width=32)
+            self.add_etherbone(phy=self.ethphy, ip_address=eth_ip, with_ethmac=False, data_width=32)
 #           if with_etherbone:
 #               self.add_etherbone(phy=self.ethphy, ip_address=eth_ip, data_width=32)
-
-        # LED MATRIX
-        #self.csr.add("disp0")
-        #self.submodules.disp0 = ScreenController(platform, 
-        #                        platform.request("led_matrix",0),
-        #                        clk_Mhz=int(sys_clk_freq//1e6),
-        #                        qty_pixels=64,n_frames=1)
 
         self.csr.add("disp0")
         self.submodules.disp0 = ScreenController64x64(

@@ -22,7 +22,7 @@ import time
 import argparse
 import mss
 from PIL import Image
-from litex.tools.remote import RemoteClient
+from litex.tools.remote import moteClient
 ,
 
 

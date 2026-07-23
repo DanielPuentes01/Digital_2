@@ -1,37 +1,29 @@
 [*]
-[*] GTKWave Analyzer v3.3.117 (w)1999-2023 BSI
-[*] Mon May 25 21:35:05 2026
+[*] GTKWave Analyzer v3.3.127 (w)1999-2026 BSI
+[*] Thu Jul 23 11:41:24 2026
 [*]
-[dumpfile] "/home/danielp/Documents/2026-1/Digital/Repositorios/Digital_2/LED/led_matrix_TB.vcd"
-[dumpfile_mtime] "Mon May 25 21:31:59 2026"
-[dumpfile_size] 56125546
-[savefile] "/home/danielp/Documents/2026-1/Digital/Repositorios/Digital_2/LED/simulation/simple/led_matrix/signals.gtkw"
-[timestart] 0
-[size] 1366 739
-[pos] -1 -1
-*-32.547070 4200000000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[dumpfile] "/home/daniel22n4/Documents/2026-1/Digital/Repositorios/Digital_2/LED8x8/led_matrix_TB.vcd"
+[dumpfile_mtime] "Thu Jul 23 11:34:22 2026"
+[dumpfile_size] 481705540
+[savefile] "/home/daniel22n4/Documents/2026-1/Digital/Repositorios/Digital_2/LED8x8/simulation/simple/led_matrix/signals.gtkw"
+[timestart] 1806400000
+[size] 1366 689
+[pos] -27 -24
+*-26.313124 2161800000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
 [treeopen] led_matrix_TB.
 [treeopen] led_matrix_TB.uut.
-[sst_width] 207
+[sst_width] 290
 [signals_width] 142
 [sst_expanded] 1
-[sst_vpaned_height] 198
+[sst_vpaned_height] 181
 @28
 led_matrix_TB.uut.RST_TIMER_s
 led_matrix_TB.uut.led.Color_in[23:0]
 led_matrix_TB.uut.DIN
-led_matrix_TB.uut.led_s
 led_matrix_TB.uut.led_done
 led_matrix_TB.uut.rst
 @22
 led_matrix_TB.uut.mem_out[23:0]
-led_matrix_TB.uut.mux.MUX_OUT[23:0]
-@28
-led_matrix_TB.uut.mux.SELECT
-led_matrix_TB.uut.change_mem
-@22
-led_matrix_TB.uut.mem_cont[24:0]
-@29
-led_matrix_TB.uut.cont_mem.rst
+led_matrix_TB.uut.cont[6:0]
 [pattern_trace] 1
 [pattern_trace] 0
