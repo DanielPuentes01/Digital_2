@@ -15,7 +15,7 @@
 
 ## [Protocolo I2C](./I2C/)
   
-## [Practica 1 Lab](./Laboratorio/Practica1/README.md)
+## [Practica 1 Lab](./Laboratorio/Practica%201/README.md)
 
 ## [Integracion Litex + Ethernet](./PanelLED64x64)
 

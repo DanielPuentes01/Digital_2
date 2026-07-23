@@ -10,7 +10,7 @@ Uso:
 Controles:
   Arrastrar el marco rojo (con click izquierdo)  -> mover el recuadro  
   Boton Enviar   -> capturar y mandar
-  Boton Salir                -> cerrar
+  Boton Salir    -> cerrar
 
 """
 import os
@@ -29,10 +29,6 @@ TMP_CAPTURE_PATH = os.path.join(tempfile.gettempdir(), "panel_led_capture.png")
 
 
 def gnome_screenshot_area(x, y, width, height, out_path=TMP_CAPTURE_PATH):
-    """Captura toda la pantalla usando el binario real `gnome-screenshot`
-    (a el si le esta permitido usar el API privado de GNOME Shell gracias
-    a la extension "Allow gnome-screenshot"; a un script arbitrario por
-    D-Bus, no) y recorta en software la zona del recuadro."""
     full_path = out_path.replace(".png", "_full.png")
 
     result = subprocess.run(
@@ -87,8 +83,8 @@ class SelectorApp:
         self.panel = tk.Toplevel(self.root)
         self.panel.attributes("-topmost", True)
         self.panel.overrideredirect(True)
-        tk.Button(self.panel, text="Enviar (Enter)", command=self.capture_and_send).pack(side="left")
-        tk.Button(self.panel, text="Salir (Esc)", command=self.quit).pack(side="left")
+        tk.Button(self.panel, text="Enviar", command=self.capture_and_send).pack(side="left")
+        tk.Button(self.panel, text="Salir", command=self.quit).pack(side="left")
 
         self._drag_start = None
         self._reposition()
@@ -196,8 +192,6 @@ def main():
         if ser.in_waiting:
             print(ser.read(ser.in_waiting).decode(errors="replace"))
 
-        print("Arrastra el marco rojo (recuadro fijo de 64x64) y Enter/Espacio")
-        print("(o el boton Enviar) para mandar esa zona al panel.")
         SelectorApp(ser).run()
 
     print("Puerto cerrado.")
